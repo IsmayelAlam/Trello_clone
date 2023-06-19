@@ -4,119 +4,119 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialData = [
   {
     id: nanoid(),
-    data: new Date(),
+    date: Date.now(),
     title: "list 01",
     cards: [
       {
         id: nanoid(),
         title: "card 01",
-        data: new Date(),
+        date: Date.now(),
       },
       {
         id: nanoid(),
         title: "card 02",
-        data: new Date(),
+        date: Date.now(),
       },
       {
         id: nanoid(),
         title: "card 03",
-        data: new Date(),
+        date: Date.now(),
       },
       {
         id: nanoid(),
         title: "card 04",
-        data: new Date(),
+        date: Date.now(),
       },
       {
         id: nanoid(),
         title: "card 05",
-        data: new Date(),
+        date: Date.now(),
       },
       {
         id: nanoid(),
         title: "card 06",
-        data: new Date(),
+        date: Date.now(),
       },
       {
         id: nanoid(),
         title: "card 07",
-        data: new Date(),
+        date: Date.now(),
       },
     ],
   },
   {
     id: nanoid(),
-    data: new Date(),
+    date: Date.now(),
     title: "list 02",
     cards: [
       {
         id: nanoid(),
         title: "card 01",
-        data: new Date(),
+        date: Date.now(),
       },
       {
         id: nanoid(),
         title: "card 02",
-        data: new Date(),
+        date: Date.now(),
       },
       {
         id: nanoid(),
         title: "card 03",
-        data: new Date(),
+        date: Date.now(),
       },
       {
         id: nanoid(),
         title: "card 04",
-        data: new Date(),
+        date: Date.now(),
       },
       {
         id: nanoid(),
         title: "card 05",
-        data: new Date(),
+        date: Date.now(),
       },
     ],
   },
   {
     id: nanoid(),
-    data: new Date(),
+    date: Date.now(),
     title: "list 03",
     cards: [
       {
         id: nanoid(),
         title: "card 01",
-        data: new Date(),
+        date: Date.now(),
       },
       {
         id: nanoid(),
         title: "card 02",
-        data: new Date(),
+        date: Date.now(),
       },
     ],
   },
   {
     id: nanoid(),
-    data: new Date(),
+    date: Date.now(),
     title: "list 04",
     cards: [
       {
         id: nanoid(),
         title: "card 01",
-        data: new Date(),
+        date: Date.now(),
       },
       {
         id: nanoid(),
         title: "card 02",
-        data: new Date(),
+        date: Date.now(),
       },
       {
         id: nanoid(),
         title: "card 03",
-        data: new Date(),
+        date: Date.now(),
       },
       {
         id: nanoid(),
         title: "card 04",
-        data: new Date(),
+        date: Date.now(),
       },
     ],
   },
@@ -126,9 +126,29 @@ const boardSlice = createSlice({
   name: "board",
   initialState: initialData,
   reducers: {
-    add(id, payload) {},
+    addList(state, action) {
+      state = state.push({
+        id: nanoid(),
+        title: action.payload,
+        date: Date.now(),
+        cards: [],
+      });
+    },
+    addCard(state, action) {
+      state = state.map((list) =>
+        list.id === action.payload.id
+          ? list.cards.push({
+              id: nanoid(),
+              title: action.payload.title,
+              date: Date.now(),
+            })
+          : list
+      );
+    },
   },
 });
 
 export default boardSlice.reducer;
-export const {} = boardSlice.actions;
+export const { addCard, addList } = boardSlice.actions;
+
+// console.log(initialData);

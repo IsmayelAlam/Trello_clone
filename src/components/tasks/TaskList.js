@@ -11,16 +11,13 @@ export default function TaskList({ list }) {
   const handleClick = () => setExpend(!expend);
 
   return (
-    <div
-      className="my-5 mx-2 bg-slate-950 rounded-lg shadow-md w-72 max-h-[90%] flex flex-col"
-      onBlur={handleClick}
-    >
+    <div className="my-5 mx-2 bg-slate-950 rounded-lg shadow-md w-72 max-h-[90%] flex flex-col">
       <TaskHeading title={list.title} />
 
       <TaskCard cards={list.cards} />
 
       {expend ? (
-        <AddNewTask type="card" onClick={handleClick} onBlur={handleClick} />
+        <AddNewTask type="card" id={list.id} collapse={handleClick} />
       ) : (
         <Button type="card" onClick={handleClick} />
       )}

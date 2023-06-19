@@ -19,11 +19,7 @@ export default function Board() {
       ))}
 
       {expend ? (
-        <AddNewTask
-          type="list"
-          onClick={handleClick}
-          onBlur={() => console.log("hi")}
-        />
+        <AddNewTask type="list" collapse={handleClick} />
       ) : (
         <Button type="list" onClick={handleClick} />
       )}

@@ -6,3 +6,5 @@ export const store = configureStore({
     board: boardSlice,
   },
 });
+
+export * from "./test";
