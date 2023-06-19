@@ -1,15 +1,29 @@
+import { useState } from "react";
+
+import AddNewTask from "../utils/AddNewTask";
 import Button from "../utils/Buttons";
 import TaskCard from "./TaskCard";
 import TaskHeading from "../utils/TaskHeading";
 
-export default function TaskList() {
+export default function TaskList({ list }) {
+  const [expend, setExpend] = useState(false);
+
+  const handleClick = () => setExpend(!expend);
+
   return (
-    <div className="my-5 mx-2 bg-slate-950 rounded-lg shadow-md w-72 max-h-[90%] flex flex-col">
-      <TaskHeading title="list" />
+    <div
+      className="my-5 mx-2 bg-slate-950 rounded-lg shadow-md w-72 max-h-[90%] flex flex-col"
+      onBlur={handleClick}
+    >
+      <TaskHeading title={list.title} />
 
-      <TaskCard num={Math.ceil(Math.random() * 20)} />
+      <TaskCard cards={list.cards} />
 
-      <Button type="card" />
+      {expend ? (
+        <AddNewTask type="card" onClick={handleClick} onBlur={handleClick} />
+      ) : (
+        <Button type="card" onClick={handleClick} />
+      )}
     </div>
   );
 }
