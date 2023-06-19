@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import {
   BsChat,
@@ -15,8 +16,8 @@ export default function Tasks({ num }) {
     <li
       className="px-2 py-1 m-2 bg-gray-800 rounded capitalize shadow cursor-pointer relative"
       draggable
-      onMouseEnter={() => setEx(!ex)}
-      onMouseLeave={() => setEx(!ex)}
+      onMouseEnter={setEx.bind(null, !ex)}
+      onMouseLeave={setEx.bind(null, !ex)}
       key={num}
     >
       {ex && (
