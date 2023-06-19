@@ -1,6 +1,6 @@
-import TaskList from "./components/TaskList";
 import SideBarLeft from "./components/layout/SideBarLeft";
 import ProjectHeading from "./components/layout/ProjectHeading";
+import TaskList from "./components/layout/TaskList";
 
 function App() {
   return (
