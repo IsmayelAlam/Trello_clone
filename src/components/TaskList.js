@@ -1,5 +1,5 @@
 import Button from "./Buttons";
-import TaskCard from "./TackCard";
+import TaskCard from "./layout/TackCard";
 
 export default function Board() {
   return (
