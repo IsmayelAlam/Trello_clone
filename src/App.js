@@ -4,7 +4,7 @@ import ProjectHeading from "./components/layout/ProjectHeading";
 
 function App() {
   return (
-    <div className="overflow-y-hidden h-screen scrollbar relative bg-slate-400">
+    <div className="overflow-y-hidden h-screen scrollbar relative bg-slate-600">
       <ProjectHeading />
       <SideBarLeft />
       <TaskList />
