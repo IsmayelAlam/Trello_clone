@@ -41,7 +41,7 @@ export default function Button({ type }) {
           id="title"
           name="title"
           required
-          placeholder="Add a short title..."
+          placeholder="Add title..."
           className="rounded resize-none scrollbar p-2 h-20"
         />
         <div className="flex gap-2 items-center">

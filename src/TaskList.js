@@ -1,15 +1,20 @@
-export function TackList({ num }) {
-  const array = [...Array(num).keys()];
+import Button from "./Buttons";
+import TaskCard from "./TackCard";
+
+export default function Board() {
   return (
-    <div className={`max-h-[90%] overflow-y-scroll scrollbar scroll-smooth`}>
-      {array.map((num) => (
-        <div
-          className="px-2 py-1 m-2 max-h-20 text-ellipsis  overflow-hidden bg-slate-200 rounded capitalize font-semibold shadow cursor-pointer"
-          draggable
-        >
-          card {num + 1}
+    <div className="w-fit h-screen bg-slate- flex items-start overflow-x-scroll mt-14 ml-8">
+      {[...Array(5).keys()].map((list) => (
+        <div className="my-5 mx-2 bg-white rounded-lg shadow-md w-72 max-h-[90%] overflow-hidden flex flex-col">
+          <h2 className="text-lg p-2 capitalize pl-5">list {list + 1}</h2>
+
+          <TaskCard num={Math.ceil(Math.random() * 20)} />
+
+          <Button type="card" />
         </div>
       ))}
+
+      <Button type="list" />
     </div>
   );
 }
