@@ -8,7 +8,7 @@ export default function TaskHeading({ title }) {
 
   if (expend)
     content = (
-      <div className="absolute top-full left-full h-screen/2 w-64 bg-slate-800 rounded shadow">
+      <div className="absolute top-full left-full h-screen/2 w-64 bg-slate-800 rounded shadow z-10">
         <div className="h-10 bg-slate-300 m-2">test</div>
         <div className="h-10 bg-slate-300 m-2">test</div>
       </div>
