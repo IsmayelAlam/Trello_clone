@@ -7,10 +7,8 @@ export default function Button({ type }) {
 
   const handleClick = () => setExpend(true);
 
-  const classes = `hover:bg-slate-300 text-start rounded capitalize ${
-    type === "card"
-      ? "p-1 pl-2 m-2"
-      : "p-2 my-5 mx-2 w-72 bg-slate-200/25 hover:text-white"
+  const classes = `hover:bg-slate-500 hover:text-white text-start rounded capitalize ${
+    type === "card" ? "p-1 pl-2 m-2" : "p-2 my-5 mx-2 w-72 bg-slate-200/25"
   }`;
 
   let content = (
@@ -22,7 +20,7 @@ export default function Button({ type }) {
   if (expend)
     content = (
       <form
-        className={`flex flex-col gap-2 px-2 py-2 my-5 mx-2 bg-slate-300 rounded font-semibold ${
+        className={`flex flex-col gap-2 px-2 py-2 my-5 mx-2 bg-slate-300 rounded font-semibold text-gray-800${
           type === "list" ? "w-72" : ""
         }`}
       >
@@ -36,11 +34,11 @@ export default function Button({ type }) {
         />
 
         <div className="flex gap-2 items-center">
-          <button className="px-5 py-1 text-white capitalize font-semibold rounded shadow bg-green-600">
+          <button className="px-5 py-1 text-white capitalize font-semibold rounded shadow bg-blue-500">
             Add {type}
           </button>
           <button>
-            <GoX className="w-5 h-5" />
+            <GoX className="w-5 h-5 text-black" />
           </button>
         </div>
       </form>

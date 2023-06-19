@@ -4,7 +4,7 @@ import Board from "./components/layout/Boards";
 
 function App() {
   return (
-    <div className="overflow-y-hidden h-screen scrollbar relative bg-slate-600">
+    <div className="overflow-y-hidden h-screen scrollbar relative bg-slate-600 text-gray-300">
       <ProjectHeading />
       <SideBarLeft />
       <Board />
