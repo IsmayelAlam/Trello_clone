@@ -13,7 +13,7 @@ export default function Tasks({ num }) {
 
   return (
     <li
-      className="px-2 py-1 m-2 bg-gray-900 rounded capitalize shadow cursor-pointer relative"
+      className="px-2 py-1 m-2 bg-gray-800 rounded capitalize shadow cursor-pointer relative"
       draggable
       onMouseEnter={() => setEx(!ex)}
       onMouseLeave={() => setEx(!ex)}
