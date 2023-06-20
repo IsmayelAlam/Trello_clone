@@ -6,7 +6,7 @@ import Button from "../utils/Buttons";
 import AddNewTask from "../utils/AddNewTask";
 
 export default function Board() {
-  const initData = useSelector((state) => state.board);
+  const initData = useSelector((state) => state.list);
 
   const [expend, setExpend] = useState(false);
 

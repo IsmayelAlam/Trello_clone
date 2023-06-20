@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { GoX } from "react-icons/go";
 import { useDispatch } from "react-redux";
-import { addCard, addList } from "../../stores/";
+import { addCard, addList } from "../../stores/listSlice";
 
 export default function AddNewTask({ type, id, collapse }) {
   const [title, setTitle] = useState("");

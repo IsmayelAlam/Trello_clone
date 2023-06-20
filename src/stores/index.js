@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import boardSlice from "./test";
+import listSlice from "./listSlice";
+import boardSlice from "./boardSlice";
 
 export const store = configureStore({
   reducer: {
     board: boardSlice,
+    list: listSlice,
   },
 });
 
-export * from "./test";
+export * from "./listSlice";
