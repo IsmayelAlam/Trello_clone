@@ -1,16 +1,25 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import { activeBoard } from "../../stores";
+import { setActive, setFavorite } from "../../stores";
 
 export default function BoardList({ board, index }) {
   const [show, setShow] = useState(false);
+
   const dispatch = useDispatch();
 
   let icon = board.favorite ? (
-    <AiFillStar className="h-7 w-7 cursor-pointer p-1" />
+    <AiFillStar
+      className="h-7 w-7 cursor-pointer p-1"
+      onClick={() => dispatch(setFavorite(board.id))}
+    />
   ) : (
-    show && <AiOutlineStar className="h-7 w-7 cursor-pointer p-1" />
+    show && (
+      <AiOutlineStar
+        className="h-7 w-7 cursor-pointer p-1"
+        onClick={() => dispatch(setFavorite(board.id))}
+      />
+    )
   );
 
   return (
@@ -21,7 +30,7 @@ export default function BoardList({ board, index }) {
       onMouseEnter={setShow.bind(null, !show)}
       onMouseLeave={setShow.bind(null, !show)}
     >
-      <h3 onClick={() => dispatch(activeBoard(board))}>{board.title}</h3>
+      <h3 onClick={() => dispatch(setActive(board.id))}>{board.title}</h3>
       {icon}
     </li>
   );

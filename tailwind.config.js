@@ -7,7 +7,6 @@ module.exports = {
         68: "17rem",
       },
     },
-    backgroundImage: {},
   },
   plugins: [],
 };

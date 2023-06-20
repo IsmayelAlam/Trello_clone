@@ -3,8 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { initialData } from "./testData";
 
-export let activeBoardIndex;
-
 const boardSlice = createSlice({
   name: "board",
   initialState: initialData,
@@ -19,11 +17,23 @@ const boardSlice = createSlice({
         lists: [],
       });
     },
-    activeBoard(state, action) {},
+    setActive(state, action) {
+      state = state.filter((data) =>
+        data.id !== action.payload
+          ? (data.active = false)
+          : (data.active = true)
+      );
+    },
+  },
+  setFavorite(state, action) {
+    console.log(action);
+    state = state.filter((data) =>
+      data.id === action.payload ? (data.active = !data.active) : data
+    );
   },
 });
 
 export default boardSlice.reducer;
-export const { addBoard, activeBoard } = boardSlice.actions;
+export const { addBoard, setActive, setFavorite } = boardSlice.actions;
 
 // console.log(initialData);
