@@ -13,7 +13,7 @@ export default function Board() {
   const handleClick = () => setExpend(!expend);
 
   return (
-    <div className="w-fit h-screen flex items-start overflow-x-scroll mt-14 ml-8">
+    <div className="w-fit h-screen flex items-start overflow-x-scroll mt-14 ml-5">
       {initData.map((list) => (
         <TaskList key={list.id} list={list} />
       ))}

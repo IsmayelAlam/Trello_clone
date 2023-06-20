@@ -3,6 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { initialData } from "./testData";
 
+export let activeBoardIndex;
+
 const boardSlice = createSlice({
   name: "board",
   initialState: initialData,
