@@ -1,6 +1,7 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 import { initialData } from "./testData";
+import { setActive } from "./boardSlice";
 
 const [initData] = initialData.filter((date) => date.active);
 
@@ -27,13 +28,13 @@ const listSlice = createSlice({
           : list
       );
     },
-    activeBoard(state, action) {
-      // console.log(action);
-      // activeBoardIndex = action.payload;
-      // return (state = initialData[activeBoardIndex].lists);
-    },
   },
-  extraReducers(builder) {},
+
+  extraReducers(builder) {
+    builder.addCase(setActive, (state, action) => {
+      return (state = action.payload.lists);
+    });
+  },
 });
 
 export default listSlice.reducer;

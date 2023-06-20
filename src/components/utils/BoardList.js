@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { setActive, setFavorite } from "../../stores";
 
-export default function BoardList({ board, index }) {
+export default function BoardList({ board }) {
   const [show, setShow] = useState(false);
 
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ export default function BoardList({ board, index }) {
       }`}
       onMouseEnter={setShow.bind(null, !show)}
       onMouseLeave={setShow.bind(null, !show)}
-      onClick={() => dispatch(setActive(board.id))}
+      onClick={() => dispatch(setActive(board))}
     >
       <h3>{board.title}</h3>
 

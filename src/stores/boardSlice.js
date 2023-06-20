@@ -22,7 +22,7 @@ const boardSlice = createSlice({
     },
     setActive(state, action) {
       state = state.filter((data) =>
-        data.id !== action.payload
+        data.id !== action.payload.id
           ? (data.active = false)
           : (data.active = true)
       );
