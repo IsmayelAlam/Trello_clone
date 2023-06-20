@@ -1,27 +1,41 @@
 import { useState } from "react";
 import { GoX } from "react-icons/go";
 import { useDispatch } from "react-redux";
-import { addCard, addList } from "../../stores/listSlice";
+import { addCard, addList, addBoard } from "../../stores";
 
-export default function AddNewTask({ type, id, collapse }) {
+export default function AddNewTask({ type, id, collapse, classes }) {
   const [title, setTitle] = useState("");
   const dispatch = useDispatch();
 
   const handleChange = (e) => setTitle(e.target.value);
 
-  const action = type === "card" ? addCard({ id, title }) : addList(title);
+  let action;
+
+  switch (type) {
+    case "card":
+      action = addCard({ id, title });
+      break;
+    case "list":
+      action = addList(title);
+      break;
+    case "board":
+      action = addBoard(title);
+      break;
+    default:
+      return null;
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    collapse();
     dispatch(action);
+    collapse();
   };
 
   return (
     <form
       className={`flex flex-col gap-2 px-2 py-2 my-5 mx-2 bg-slate-300 rounded font-semibold text-gray-800 capitalize ${
         type === "list" ? "w-72" : ""
-      }`}
+      } ${classes}`}
       onSubmit={handleSubmit}
     >
       <label>Title</label>

@@ -17,7 +17,6 @@ const boardSlice = createSlice({
         lists: [],
       });
     },
-
     setActive(state, action) {
       state = state.filter((data) =>
         data.id !== action.payload
