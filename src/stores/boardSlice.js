@@ -17,6 +17,7 @@ const boardSlice = createSlice({
         lists: [],
       });
     },
+
     setActive(state, action) {
       state = state.filter((data) =>
         data.id !== action.payload
@@ -24,12 +25,11 @@ const boardSlice = createSlice({
           : (data.active = true)
       );
     },
-  },
-  setFavorite(state, action) {
-    console.log(action);
-    state = state.filter((data) =>
-      data.id === action.payload ? (data.active = !data.active) : data
-    );
+    setFavorite(state, action) {
+      state = state.map((data) =>
+        data.id === action.payload ? (data.favorite = !data.favorite) : data
+      );
+    },
   },
 });
 

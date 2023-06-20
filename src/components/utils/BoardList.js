@@ -9,17 +9,9 @@ export default function BoardList({ board, index }) {
   const dispatch = useDispatch();
 
   let icon = board.favorite ? (
-    <AiFillStar
-      className="h-7 w-7 cursor-pointer p-1"
-      onClick={() => dispatch(setFavorite(board.id))}
-    />
+    <AiFillStar className="h-7 w-7 cursor-pointer p-1" />
   ) : (
-    show && (
-      <AiOutlineStar
-        className="h-7 w-7 cursor-pointer p-1"
-        onClick={() => dispatch(setFavorite(board.id))}
-      />
-    )
+    show && <AiOutlineStar className="h-7 w-7 cursor-pointer p-1" />
   );
 
   return (
@@ -29,9 +21,11 @@ export default function BoardList({ board, index }) {
       }`}
       onMouseEnter={setShow.bind(null, !show)}
       onMouseLeave={setShow.bind(null, !show)}
+      onClick={() => dispatch(setActive(board.id))}
     >
-      <h3 onClick={() => dispatch(setActive(board.id))}>{board.title}</h3>
-      {icon}
+      <h3>{board.title}</h3>
+
+      <div onClick={() => dispatch(setFavorite(board.id))}>{icon}</div>
     </li>
   );
 }

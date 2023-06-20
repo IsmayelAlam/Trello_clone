@@ -5,7 +5,7 @@ export const initialData = [
     id: nanoid(),
     date: Date.now(),
     title: "test project 01",
-    favorite: false,
+    favorite: true,
     active: true,
     lists: [
       {
@@ -112,7 +112,7 @@ export const initialData = [
     id: nanoid(),
     date: Date.now(),
     title: "test project 02",
-    favorite: true,
+    favorite: false,
     active: false,
     lists: [
       {

@@ -2,11 +2,11 @@ import { nanoid } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 import { initialData } from "./testData";
 
-export let activeBoardIndex = 0;
+const [initData] = initialData.filter((date) => date.active);
 
 const listSlice = createSlice({
   name: "list",
-  initialState: initialData[activeBoardIndex].lists,
+  initialState: initData.lists,
   reducers: {
     addList(state, action) {
       state = state.push({
@@ -28,14 +28,15 @@ const listSlice = createSlice({
       );
     },
     activeBoard(state, action) {
-      console.log(action);
-      activeBoardIndex = action.payload;
-      return (state = initialData[activeBoardIndex].lists);
+      // console.log(action);
+      // activeBoardIndex = action.payload;
+      // return (state = initialData[activeBoardIndex].lists);
     },
   },
+  extraReducers(builder) {},
 });
 
 export default listSlice.reducer;
-export const { addCard, addList, activeBoard } = listSlice.actions;
+export const { addCard, addList } = listSlice.actions;
 
 // console.log(initialData);
