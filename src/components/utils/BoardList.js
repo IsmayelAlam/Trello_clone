@@ -16,7 +16,7 @@ export default function BoardList({ board, index }) {
 
   return (
     <li
-      className={`w-full h-8 p-2 my-2  rounded flex items-center justify-between hover:bg-slate-700 cursor-pointer ${
+      className={`h-8 p-2 my-2 ml-4 rounded flex items-center justify-between hover:bg-slate-700 cursor-pointer ${
         board.active && "bg-slate-500"
       }`}
       onMouseEnter={setShow.bind(null, !show)}

@@ -17,6 +17,9 @@ const boardSlice = createSlice({
         lists: [],
       });
     },
+    deleteBoard(state, action) {
+      return state.filter((data) => data.id !== action.payload);
+    },
     setActive(state, action) {
       state = state.filter((data) =>
         data.id !== action.payload
@@ -33,6 +36,7 @@ const boardSlice = createSlice({
 });
 
 export default boardSlice.reducer;
-export const { addBoard, setActive, setFavorite } = boardSlice.actions;
+export const { addBoard, setActive, setFavorite, deleteBoard } =
+  boardSlice.actions;
 
 // console.log(initialData);
