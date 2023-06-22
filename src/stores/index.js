@@ -11,3 +11,9 @@ export const store = configureStore({
 
 export * from "./listSlice";
 export * from "./boardSlice";
+
+export const ItemTypes = {
+  BOARD: "board",
+  LIST: "list",
+  CARD: "card",
+};

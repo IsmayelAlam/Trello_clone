@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import { DragDropContext } from "react-beautiful-dnd";
 
 import TaskList from "../tasks/TaskList";
 import Button from "../utils/Buttons";
@@ -10,21 +11,25 @@ export default function Board() {
 
   const [expend, setExpend] = useState(false);
 
-  // console.log(initData);
+  // console.log(board);
 
   const handleClick = () => setExpend(!expend);
 
   return (
-    <div className="w-fit h-screen flex items-start overflow-x-scroll mt-14 ml-5">
-      {initData.map((list) => (
-        <TaskList key={list.id} list={list} />
-      ))}
+    <DragDropContext onDragStart={() => console.log("hi")}>
+      <div className="w-fit h-screen flex items-start mt-14">
+        <ul className="w-fit h-screen flex items-start overflow-x-scroll ml-5">
+          {initData.map((list, index) => (
+            <TaskList key={list.id} list={list} index={index} />
+          ))}
+        </ul>
 
-      {expend ? (
-        <AddNewTask type="list" collapse={handleClick} />
-      ) : (
-        <Button type="list" onClick={handleClick} />
-      )}
-    </div>
+        {expend ? (
+          <AddNewTask type="list" collapse={handleClick} />
+        ) : (
+          <Button type="list" onClick={handleClick} />
+        )}
+      </div>{" "}
+    </DragDropContext>
   );
 }

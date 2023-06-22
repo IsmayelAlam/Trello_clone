@@ -17,6 +17,9 @@ const listSlice = createSlice({
         cards: [],
       });
     },
+    deleteList(state, action) {
+      return state.filter((data) => data.id !== action.payload.id);
+    },
     addCard(state, action) {
       state = state.map((list) =>
         list.id === action.payload.id
@@ -32,11 +35,10 @@ const listSlice = createSlice({
 
   extraReducers(builder) {
     builder.addCase(setActive, (state, action) => {
-      console.log(state);
       return (state = action.payload.lists);
     });
   },
 });
 
 export default listSlice.reducer;
-export const { addCard, addList } = listSlice.actions;
+export const { addCard, addList, deleteList } = listSlice.actions;

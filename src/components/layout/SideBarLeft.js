@@ -27,7 +27,7 @@ export default function SideBarLeft() {
       onMouseDown={!show ? handleShow : setShow.bind(null, true)}
     >
       <div className="p-2 mb-2 flex items-center gap-3 font-semibold text-xl relative">
-        <GoProject className="h-10 w-10 p-2 rounded-md bg-white text-black inline-block" />
+        <GoProject className="h-10 w-10 p-1 rounded-md bg-white text-black inline-block" />
         <h2>Your workspace</h2>
         <div className="absolute -right-16" onClick={handleShow}>
           {show && <BsFillArrowLeftCircleFill className="p-1 h-10 w-10" />}

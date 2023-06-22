@@ -5,7 +5,6 @@ export const initialData = [
     id: nanoid(),
     date: Date.now(),
     title: "test project 01",
-    type: "board",
     favorite: true,
     active: true,
     lists: [
@@ -13,24 +12,24 @@ export const initialData = [
         id: nanoid(),
         date: Date.now(),
         title: "list 01",
-        type: "list",
         cards: [
           {
             id: nanoid(),
             title: "card 01",
-            type: "card",
             date: Date.now(),
+            description: "",
+            label: [],
+            taskList: [],
+            comment: [],
           },
           {
             id: nanoid(),
             title: "card 02",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 03",
-            type: "card",
             date: Date.now(),
           },
         ],
@@ -43,31 +42,26 @@ export const initialData = [
           {
             id: nanoid(),
             title: "card 01",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 02",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 03",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 04",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 05",
-            type: "card",
             date: Date.now(),
           },
         ],
@@ -80,13 +74,11 @@ export const initialData = [
           {
             id: nanoid(),
             title: "card 01",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 02",
-            type: "card",
             date: Date.now(),
           },
         ],
@@ -99,25 +91,21 @@ export const initialData = [
           {
             id: nanoid(),
             title: "card 01",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 02",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 03",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 04",
-            type: "card",
             date: Date.now(),
           },
         ],
@@ -129,55 +117,46 @@ export const initialData = [
     date: Date.now(),
     title: "test project 02",
     favorite: false,
-    type: "board",
     active: false,
     lists: [
       {
         id: nanoid(),
         date: Date.now(),
         title: "list 01",
-        type: "list",
         cards: [
           {
             id: nanoid(),
             title: "card 01",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 02",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 03",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 04",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 05",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 06",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 07",
-            type: "card",
             date: Date.now(),
           },
         ],
@@ -190,31 +169,26 @@ export const initialData = [
           {
             id: nanoid(),
             title: "card 01",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 02",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 03",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 04",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 05",
-            type: "card",
             date: Date.now(),
           },
         ],
@@ -227,13 +201,11 @@ export const initialData = [
           {
             id: nanoid(),
             title: "card 01",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 02",
-            type: "card",
             date: Date.now(),
           },
         ],
@@ -246,42 +218,35 @@ export const initialData = [
     title: "test project 03",
     favorite: false,
     active: false,
-    type: "board",
     lists: [
       {
         id: nanoid(),
         date: Date.now(),
         title: "list 01",
-        type: "list",
         cards: [
           {
             id: nanoid(),
             title: "card 01",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 02",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 03",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 04",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 05",
-            type: "card",
             date: Date.now(),
           },
         ],
@@ -294,7 +259,6 @@ export const initialData = [
           {
             id: nanoid(),
             title: "card 01",
-            type: "card",
             date: Date.now(),
           },
         ],
@@ -307,13 +271,11 @@ export const initialData = [
           {
             id: nanoid(),
             title: "card 01",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 02",
-            type: "card",
             date: Date.now(),
           },
         ],
@@ -326,13 +288,11 @@ export const initialData = [
           {
             id: nanoid(),
             title: "card 01",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 02",
-            type: "card",
             date: Date.now(),
           },
         ],
@@ -345,19 +305,16 @@ export const initialData = [
           {
             id: nanoid(),
             title: "card 01",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 02",
-            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 03",
-            type: "card",
             date: Date.now(),
           },
         ],

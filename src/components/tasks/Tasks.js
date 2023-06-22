@@ -2,18 +2,17 @@ import { useState } from "react";
 import { BsChat, BsPencil, BsTextLeft, BsListCheck } from "react-icons/bs";
 import TaskModal from "./TaskModal";
 
-export default function Tasks({ card }) {
+export default function Tasks({ card, index }) {
   const [show, setShow] = useState(false);
   const [modal, setModal] = useState(false);
 
   return (
     <li
       className="px-2 py-1 m-2 bg-gray-800 rounded capitalize shadow cursor-pointer relative z-0"
-      draggable
       onMouseEnter={() => setShow(!show)}
       onMouseLeave={() => setShow(!show)}
       key={card}
-      onClick={setModal.bind(null, !modal)}
+      // onClick={setModal.bind(null, !modal)}
     >
       {show && (
         <BsPencil className="absolute right-0 top-0 p-1 h-6 w-6 rounded hover:bg-slate-700" />
