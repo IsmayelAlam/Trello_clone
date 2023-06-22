@@ -1,7 +1,6 @@
 import SideBarLeft from "./components/layout/SideBarLeft";
 import ProjectHeading from "./components/utils/ProjectHeading";
 import Board from "./components/layout/Boards";
-// import TaskModal from "./components/tasks/TaskModal";
 
 function App() {
   return (
@@ -9,7 +8,6 @@ function App() {
       <ProjectHeading />
       <SideBarLeft />
       <Board />
-      {/* <TaskModal /> */}
     </div>
   );
 }

@@ -5,6 +5,7 @@ export const initialData = [
     id: nanoid(),
     date: Date.now(),
     title: "test project 01",
+    type: "board",
     favorite: true,
     active: true,
     lists: [
@@ -12,20 +13,24 @@ export const initialData = [
         id: nanoid(),
         date: Date.now(),
         title: "list 01",
+        type: "list",
         cards: [
           {
             id: nanoid(),
             title: "card 01",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 02",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 03",
+            type: "card",
             date: Date.now(),
           },
         ],
@@ -38,26 +43,31 @@ export const initialData = [
           {
             id: nanoid(),
             title: "card 01",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 02",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 03",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 04",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 05",
+            type: "card",
             date: Date.now(),
           },
         ],
@@ -70,11 +80,13 @@ export const initialData = [
           {
             id: nanoid(),
             title: "card 01",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 02",
+            type: "card",
             date: Date.now(),
           },
         ],
@@ -87,21 +99,25 @@ export const initialData = [
           {
             id: nanoid(),
             title: "card 01",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 02",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 03",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 04",
+            type: "card",
             date: Date.now(),
           },
         ],
@@ -113,46 +129,55 @@ export const initialData = [
     date: Date.now(),
     title: "test project 02",
     favorite: false,
+    type: "board",
     active: false,
     lists: [
       {
         id: nanoid(),
         date: Date.now(),
         title: "list 01",
+        type: "list",
         cards: [
           {
             id: nanoid(),
             title: "card 01",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 02",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 03",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 04",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 05",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 06",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 07",
+            type: "card",
             date: Date.now(),
           },
         ],
@@ -165,26 +190,31 @@ export const initialData = [
           {
             id: nanoid(),
             title: "card 01",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 02",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 03",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 04",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 05",
+            type: "card",
             date: Date.now(),
           },
         ],
@@ -197,11 +227,13 @@ export const initialData = [
           {
             id: nanoid(),
             title: "card 01",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 02",
+            type: "card",
             date: Date.now(),
           },
         ],
@@ -214,45 +246,42 @@ export const initialData = [
     title: "test project 03",
     favorite: false,
     active: false,
+    type: "board",
     lists: [
       {
         id: nanoid(),
         date: Date.now(),
         title: "list 01",
+        type: "list",
         cards: [
           {
             id: nanoid(),
             title: "card 01",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 02",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 03",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 04",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 05",
-            date: Date.now(),
-          },
-          {
-            id: nanoid(),
-            title: "card 06",
-            date: Date.now(),
-          },
-          {
-            id: nanoid(),
-            title: "card 07",
+            type: "card",
             date: Date.now(),
           },
         ],
@@ -265,6 +294,7 @@ export const initialData = [
           {
             id: nanoid(),
             title: "card 01",
+            type: "card",
             date: Date.now(),
           },
         ],
@@ -277,11 +307,13 @@ export const initialData = [
           {
             id: nanoid(),
             title: "card 01",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 02",
+            type: "card",
             date: Date.now(),
           },
         ],
@@ -294,32 +326,13 @@ export const initialData = [
           {
             id: nanoid(),
             title: "card 01",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 02",
-            date: Date.now(),
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: nanoid(),
-    date: Date.now(),
-    title: "test project 04",
-    favorite: false,
-    active: false,
-    lists: [
-      {
-        id: nanoid(),
-        date: Date.now(),
-        title: "list 01",
-        cards: [
-          {
-            id: nanoid(),
-            title: "card 01",
+            type: "card",
             date: Date.now(),
           },
         ],
@@ -327,48 +340,24 @@ export const initialData = [
       {
         id: nanoid(),
         date: Date.now(),
-        title: "list 02",
+        title: "list 05",
         cards: [
           {
             id: nanoid(),
             title: "card 01",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 02",
+            type: "card",
             date: Date.now(),
           },
           {
             id: nanoid(),
             title: "card 03",
-            date: Date.now(),
-          },
-          {
-            id: nanoid(),
-            title: "card 04",
-            date: Date.now(),
-          },
-          {
-            id: nanoid(),
-            title: "card 05",
-            date: Date.now(),
-          },
-        ],
-      },
-      {
-        id: nanoid(),
-        date: Date.now(),
-        title: "list 03",
-        cards: [
-          {
-            id: nanoid(),
-            title: "card 01",
-            date: Date.now(),
-          },
-          {
-            id: nanoid(),
-            title: "card 02",
+            type: "card",
             date: Date.now(),
           },
         ],

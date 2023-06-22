@@ -32,6 +32,7 @@ const listSlice = createSlice({
 
   extraReducers(builder) {
     builder.addCase(setActive, (state, action) => {
+      console.log(state);
       return (state = action.payload.lists);
     });
   },
@@ -39,5 +40,3 @@ const listSlice = createSlice({
 
 export default listSlice.reducer;
 export const { addCard, addList } = listSlice.actions;
-
-// console.log(initialData);

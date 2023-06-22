@@ -10,6 +10,8 @@ export default function Board() {
 
   const [expend, setExpend] = useState(false);
 
+  // console.log(initData);
+
   const handleClick = () => setExpend(!expend);
 
   return (

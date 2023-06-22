@@ -18,7 +18,7 @@ const boardSlice = createSlice({
       });
     },
     deleteBoard(state, action) {
-      return state.filter((data) => data.id !== action.payload);
+      return state.filter((data) => data.id !== action.payload.id);
     },
     setActive(state, action) {
       state = state.filter((data) =>
