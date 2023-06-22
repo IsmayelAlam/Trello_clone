@@ -18,7 +18,7 @@ export default function Board() {
   return (
     <DragDropContext onDragStart={() => console.log("hi")}>
       <div className="w-fit h-screen flex items-start mt-14">
-        <ul className="w-fit h-screen flex items-start overflow-x-scroll ml-5">
+        <ul className="w-fit h-screen flex items-start ml-5">
           {initData.map((list, index) => (
             <TaskList key={list.id} list={list} index={index} />
           ))}

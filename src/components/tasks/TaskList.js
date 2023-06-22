@@ -12,7 +12,7 @@ export default function TaskList({ list, index }) {
 
   return (
     <li className="my-5 mx-2 bg-slate-950 rounded-lg shadow-md w-72 max-h-[90%] flex flex-col">
-      <TaskHeading list={list} />
+      <TaskHeading list={list} collapse={handleClick} />
 
       <TaskCard cards={list.cards} index={index} />
 
