@@ -16,7 +16,7 @@ export default function AddNewTask({ type, id, collapse, classes }) {
       action = addCard({ id, title });
       break;
     case "list":
-      action = addList(title);
+      action = addList({ id, title });
       break;
     case "board":
       action = addBoard(title);

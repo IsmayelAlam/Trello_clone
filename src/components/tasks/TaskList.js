@@ -14,7 +14,7 @@ export default function TaskList({ list, index }) {
     <li className="my-5 mx-2 bg-slate-950 rounded-lg shadow-md w-72 max-h-[90%] flex flex-col">
       <TaskHeading list={list} collapse={handleClick} />
 
-      <TaskCard cards={list.cards} index={index} />
+      <TaskCard cards={list.cards} index={index} id={list.id} />
 
       {expend ? (
         <AddNewTask type="card" id={list.id} collapse={handleClick} />

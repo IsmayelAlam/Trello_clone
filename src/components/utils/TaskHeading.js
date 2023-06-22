@@ -28,19 +28,19 @@ export default function TaskHeading({ list, collapse }) {
         <hr />
         <button
           className="h-10 w-48 m-2 text-center p-2 rounded bg-slate-700 flex items-center justify-center capitalize"
-          onClick={() => dispatch(deleteList(list))}
-          autoFocus
-        >
-          <AiFillDelete className="h-7 w-7 cursor-pointer p-1" />
-          <span>Delete</span>
-        </button>
-        <button
-          className="h-10 w-48 m-2 text-center p-2 rounded bg-slate-700 flex items-center justify-center capitalize"
           onClickCapture={collapse}
           onClick={setExpend.bind(null, !expend)}
         >
           <AiFillPlusSquare className="h-7 w-7 cursor-pointer p-1" />
           <span>add Card</span>
+        </button>
+        <button
+          className="h-10 w-48 m-2 text-center p-2 rounded bg-slate-700 flex items-center justify-center capitalize"
+          onClick={() => dispatch(deleteList(list))}
+          autoFocus
+        >
+          <AiFillDelete className="h-7 w-7 cursor-pointer p-1" />
+          <span>Delete</span>
         </button>
       </div>
     );

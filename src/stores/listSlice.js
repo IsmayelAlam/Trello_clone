@@ -31,6 +31,7 @@ const listSlice = createSlice({
           : list
       );
     },
+    dropCard(start, action) {},
   },
 
   extraReducers(builder) {
@@ -41,4 +42,4 @@ const listSlice = createSlice({
 });
 
 export default listSlice.reducer;
-export const { addCard, addList, deleteList } = listSlice.actions;
+export const { addCard, addList, deleteList, dropCard } = listSlice.actions;

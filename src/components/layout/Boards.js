@@ -5,9 +5,11 @@ import { DragDropContext } from "react-beautiful-dnd";
 import TaskList from "../tasks/TaskList";
 import Button from "../utils/Buttons";
 import AddNewTask from "../utils/AddNewTask";
+import { useDispatch } from "react-redux";
 
 export default function Board() {
   const initData = useSelector((state) => state.list);
+  const dispatch = useDispatch();
 
   const [expend, setExpend] = useState(false);
 
@@ -16,7 +18,7 @@ export default function Board() {
   const handleClick = () => setExpend(!expend);
 
   return (
-    <DragDropContext onDragStart={() => console.log("hi")}>
+    <DragDropContext onDragEnd={(task) => console.log(task)}>
       <div className="w-fit h-screen flex items-start mt-14">
         <ul className="w-fit h-screen flex items-start ml-5">
           {initData.map((list, index) => (
