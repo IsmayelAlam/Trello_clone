@@ -6,6 +6,7 @@ import TaskList from "../tasks/TaskList";
 import Button from "../utils/Buttons";
 import AddNewTask from "../utils/AddNewTask";
 import { useDispatch } from "react-redux";
+import { dropCard } from "../../stores";
 
 export default function Board() {
   const initData = useSelector((state) => state.list);
@@ -13,12 +14,12 @@ export default function Board() {
 
   const [expend, setExpend] = useState(false);
 
-  // console.log(board);
+  // console.log(initData);
 
   const handleClick = () => setExpend(!expend);
 
   return (
-    <DragDropContext onDragEnd={(task) => console.log(task)}>
+    <DragDropContext onDragEnd={(task) => dispatch(dropCard(task))}>
       <div className="w-fit h-screen flex items-start mt-14">
         <ul className="w-fit h-screen flex items-start ml-5">
           {initData.map((list, index) => (

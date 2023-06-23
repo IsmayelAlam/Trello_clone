@@ -31,7 +31,48 @@ const listSlice = createSlice({
           : list
       );
     },
-    dropCard(start, action) {},
+    deleteCard(state, action) {
+      state = state.map((list) =>
+        list.id === action.payload.id
+          ? {
+              ...list,
+              cards: list.cards.filter((card) => card.id !== action.payload.id),
+            }
+          : list
+      );
+    },
+    dropCard(state, action) {
+      const card = state.reduce((cards, list) => {
+        if (list.id === action.payload.source.droppableId)
+          [cards] = list.cards.filter((card) =>
+            card.id === action.payload.draggableId ? true : false
+          );
+        return cards;
+      });
+      console.log(card);
+      state = state.map((list) => {
+        let lists = list;
+
+        if (list.id === action.payload.destination.droppableId) {
+          lists = {
+            ...list,
+            cards: [...list.cards, card],
+          };
+        }
+        if (list.id === action.payload.source.droppableId) {
+          lists = {
+            ...list,
+            cards: list.cards.filter(
+              (card) => card.id !== action.payload.draggableId
+            ),
+          };
+        }
+
+        return lists;
+      });
+
+      return state;
+    },
   },
 
   extraReducers(builder) {
