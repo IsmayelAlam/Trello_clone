@@ -7,7 +7,7 @@ export default function ProjectHeading() {
   const boards = useSelector((state) => state.board);
   const dispatch = useDispatch();
 
-  return boards.map((board) =>
+  let content = boards.map((board) =>
     board.active ? (
       <header
         className="w-screen fixed bg-slate-700 text-white h-14 flex items-center justify-start gap-2"
@@ -26,4 +26,6 @@ export default function ProjectHeading() {
       </header>
     ) : null
   );
+
+  return content;
 }

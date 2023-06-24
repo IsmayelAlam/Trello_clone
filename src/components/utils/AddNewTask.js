@@ -34,7 +34,7 @@ export default function AddNewTask({ type, id, collapse, classes }) {
   return (
     <form
       className={`flex flex-col gap-2 px-2 py-2 my-5 mx-2 bg-slate-300 rounded font-semibold text-gray-800 capitalize ${
-        type === "list" ? "w-72" : ""
+        type === "card" ? "" : "w-72"
       } ${classes}`}
       onSubmit={handleSubmit}
     >

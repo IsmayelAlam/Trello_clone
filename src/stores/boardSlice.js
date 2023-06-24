@@ -9,22 +9,18 @@ const boardSlice = createSlice({
   initialState: initialData,
   reducers: {
     addBoard(state, action) {
-      state = state.map((board) => {
-        board = {
-          ...board,
-          active: false,
-        };
-        return board;
-      });
-
-      state = state.push({
-        active: true,
-        date: Date.now(),
-        favorite: false,
-        id: nanoid(),
-        title: action.payload,
-        lists: [],
-      });
+      state = state.map((board) => (board = { ...board, active: false }));
+      state = [
+        ...state,
+        {
+          active: true,
+          date: Date.now(),
+          favorite: false,
+          id: nanoid(),
+          title: action.payload,
+          lists: [],
+        },
+      ];
       return state;
     },
     deleteBoard(state, action) {
@@ -55,4 +51,4 @@ export default boardSlice.reducer;
 export const { addBoard, setActive, setFavorite, deleteBoard } =
   boardSlice.actions;
 
-// console.log(initialData);
+console.log(initialData);

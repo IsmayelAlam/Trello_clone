@@ -14,7 +14,7 @@ export default function Board() {
 
   const [expend, setExpend] = useState(false);
 
-  console.log(initData);
+  // console.log(initData);
 
   const handleClick = () => setExpend(!expend);
 
@@ -28,15 +28,9 @@ export default function Board() {
         </ul>
 
         {expend ? (
-          <AddNewTask
-            type={!initData.length ? "board" : "list"}
-            collapse={handleClick}
-          />
+          <AddNewTask type="list" collapse={handleClick} />
         ) : (
-          <Button
-            type={!initData.length ? "board" : "list"}
-            onClick={handleClick}
-          />
+          <Button type="list" onClick={handleClick} />
         )}
       </div>{" "}
     </DragDropContext>

@@ -54,7 +54,10 @@ export default function SideBarLeft() {
         {expend ? (
           <AddNewTask
             type="board"
-            collapse={handleClick}
+            collapse={() => {
+              handleClick();
+              handleShow();
+            }}
             classes="absolute top-0 left-full"
           />
         ) : (
