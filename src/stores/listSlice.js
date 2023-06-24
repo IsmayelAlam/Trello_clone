@@ -12,14 +12,17 @@ const listSlice = createSlice({
     addList(state, action) {
       state = state.push({
         id: nanoid(),
-        title: action.payload,
+        title: action.payload.title,
         date: Date.now(),
         cards: [],
       });
     },
+
     deleteList(state, action) {
       return state.filter((data) => data.id !== action.payload.id);
     },
+
+    // for cards
     addCard(state, action) {
       state = state.map((list) =>
         list.id === action.payload.id
@@ -31,6 +34,7 @@ const listSlice = createSlice({
           : list
       );
     },
+
     deleteCard(state, action) {
       state = state.map((list) =>
         list.id === action.payload.id
@@ -41,30 +45,44 @@ const listSlice = createSlice({
           : list
       );
     },
+
     dropCard(state, action) {
+      const { source, destination, draggableId } = action.payload;
+
+      if (
+        !destination ||
+        (destination.droppableId === source.droppableId &&
+          destination.index === source.index)
+      )
+        return;
+
       const card = state.reduce((cards, list) => {
-        if (list.id === action.payload.source.droppableId)
+        if (list.id === source.droppableId)
           [cards] = list.cards.filter((card) =>
-            card.id === action.payload.draggableId ? true : false
+            card.id === draggableId ? true : false
           );
         return cards;
       });
-      console.log(card);
+      console.log(action);
+
       state = state.map((list) => {
         let lists = list;
 
-        if (list.id === action.payload.destination.droppableId) {
+        if (list.id === destination.droppableId) {
           lists = {
             ...list,
             cards: [...list.cards, card],
           };
         }
-        if (list.id === action.payload.source.droppableId) {
+
+        if (list.id === source.droppableId) {
           lists = {
             ...list,
-            cards: list.cards.filter(
-              (card) => card.id !== action.payload.draggableId
-            ),
+            cards: [
+              ...list.cards
+                .toSpliced(source.index, 1)
+                .toSpliced(destination.index, 0, card),
+            ],
           };
         }
 
