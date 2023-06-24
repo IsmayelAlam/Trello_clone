@@ -29,7 +29,7 @@ export default function BoardList({ board }) {
       <h3>{board.title}</h3>
 
       <div className="flex">
-        <button onClick={() => dispatch(deleteBoard(board))}>
+        <button onClickCapture={() => dispatch(deleteBoard(board))}>
           {deleteBtn}
         </button>
         <button onClick={() => dispatch(setFavorite(board.id))}>{icon}</button>

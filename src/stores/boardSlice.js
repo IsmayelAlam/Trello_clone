@@ -1,6 +1,7 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 
+import { addList } from "./listSlice";
 import { initialData } from "./testData";
 
 const boardSlice = createSlice({
@@ -8,6 +9,14 @@ const boardSlice = createSlice({
   initialState: initialData,
   reducers: {
     addBoard(state, action) {
+      state = state.map((board) => {
+        board = {
+          ...board,
+          active: false,
+        };
+        return board;
+      });
+
       state = state.push({
         active: true,
         date: Date.now(),
@@ -16,6 +25,7 @@ const boardSlice = createSlice({
         title: action.payload,
         lists: [],
       });
+      return state;
     },
     deleteBoard(state, action) {
       return state.filter((data) => data.id !== action.payload.id);
@@ -32,6 +42,12 @@ const boardSlice = createSlice({
         data.id === action.payload ? (data.favorite = !data.favorite) : data
       );
     },
+  },
+
+  extraReducers(builder) {
+    builder.addCase(addList, (state, action) => {
+      console.log(state);
+    });
   },
 });
 

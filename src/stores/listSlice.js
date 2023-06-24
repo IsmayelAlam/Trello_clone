@@ -1,7 +1,7 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 import { initialData } from "./testData";
-import { setActive } from "./boardSlice";
+import { addBoard, deleteBoard, setActive } from "./boardSlice";
 
 const [initData] = initialData.filter((date) => date.active);
 
@@ -22,7 +22,7 @@ const listSlice = createSlice({
       return state.filter((data) => data.id !== action.payload.id);
     },
 
-    // for cards
+    // cards
     addCard(state, action) {
       state = state.map((list) =>
         list.id === action.payload.id
@@ -47,7 +47,7 @@ const listSlice = createSlice({
     },
 
     dropCard(state, action) {
-      const { source, destination, draggableId } = action.payload;
+      const { source, destination } = action.payload;
 
       if (
         !destination ||
@@ -83,7 +83,6 @@ const listSlice = createSlice({
             cards: [...list.cards.toSpliced(destination.index, 0, card)],
           };
         }
-
         if (
           list.id === source.droppableId &&
           destination.droppableId === source.droppableId
@@ -93,7 +92,6 @@ const listSlice = createSlice({
             cards: [...list.cards.toSpliced(destination.index, 0, card)],
           };
         }
-
         return lists;
       });
 
@@ -102,9 +100,12 @@ const listSlice = createSlice({
   },
 
   extraReducers(builder) {
-    builder.addCase(setActive, (state, action) => {
-      return (state = action.payload.lists);
-    });
+    builder.addCase(
+      setActive,
+      (state, action) => (state = action.payload.lists)
+    );
+    builder.addCase(deleteBoard, (state, action) => (state = []));
+    builder.addCase(addBoard, (state, action) => (state = []));
   },
 });
 
