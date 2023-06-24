@@ -26,6 +26,14 @@ const boardSlice = createSlice({
     deleteBoard(state, action) {
       return state.filter((data) => data.id !== action.payload.id);
     },
+    renameBoard(state, action) {
+      state = state.map((board) =>
+        board.id === action.payload.id
+          ? { ...board, title: action.payload.newTitle }
+          : board
+      );
+      return state;
+    },
     setActive(state, action) {
       state = state.filter((data) =>
         data.id !== action.payload.id
@@ -48,7 +56,7 @@ const boardSlice = createSlice({
 });
 
 export default boardSlice.reducer;
-export const { addBoard, setActive, setFavorite, deleteBoard } =
+export const { addBoard, setActive, setFavorite, deleteBoard, renameBoard } =
   boardSlice.actions;
 
 // console.log(initialData);

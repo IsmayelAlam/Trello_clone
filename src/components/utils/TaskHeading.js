@@ -1,11 +1,11 @@
 import { useState } from "react";
-// import { AiOutlineHolder } from "react-icons/tb";
+
 import {
   AiFillDelete,
   AiFillPlusSquare,
   AiOutlineCloseCircle,
   AiFillEdit,
-  AiOutlineHolder,
+  AiOutlineMore,
 } from "react-icons/ai";
 
 import { deleteList, renameList } from "../../stores";
@@ -39,6 +39,7 @@ export default function TaskHeading({ list, collapse }) {
           />
         </button>
         <hr />
+
         <button
           className={classes}
           onClickCapture={collapse}
@@ -80,7 +81,7 @@ export default function TaskHeading({ list, collapse }) {
         )}
       </h2>
       <div className="relative">
-        <AiOutlineHolder
+        <AiOutlineMore
           className="h-7 w-7 cursor-pointer p-1 rounded hover:bg-slate-500"
           onClick={setExpend.bind(null, !expend)}
         />
