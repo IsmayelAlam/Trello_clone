@@ -7,7 +7,7 @@ export default function TaskCard({ cards, index, id }) {
       {(provided) => {
         return (
           <ul
-            className="max-h-[90%] overflow-y-scroll scrollbar scroll-smooth z-0"
+            className="max-h-[90%] min-h-[1rem] overflow-y-scroll scrollbar scroll-smooth z-0"
             {...provided.droppableProps}
             ref={provided.innerRef}
           >

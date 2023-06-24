@@ -56,32 +56,41 @@ const listSlice = createSlice({
       )
         return;
 
-      const card = state.reduce((cards, list) => {
-        if (list.id === source.droppableId) {
-          cards = list.cards[source.index];
-        }
+      let card = state.reduce((cards, list) => {
+        if (list.id === source.droppableId) cards = list.cards[source.index];
         return cards;
       }, []);
-      console.log(card);
+
+      state = state.map((list) => {
+        if (list.id === source.droppableId) {
+          list = {
+            ...list,
+            cards: [...list.cards.toSpliced(source.index, 1)],
+          };
+        }
+        return list;
+      });
 
       state = state.map((list) => {
         let lists = list;
 
-        // if (list.id === destination.droppableId) {
-        //   lists = {
-        //     ...list,
-        //     cards: [...list.cards, card],
-        //   };
-        // }
-
-        if (list.id === source.droppableId) {
+        if (
+          list.id === destination.droppableId &&
+          destination.droppableId !== source.droppableId
+        ) {
           lists = {
             ...list,
-            cards: [
-              ...list.cards
-                .toSpliced(source.index, 1)
-                .toSpliced(destination.index, 0, card),
-            ],
+            cards: [...list.cards.toSpliced(destination.index, 0, card)],
+          };
+        }
+
+        if (
+          list.id === source.droppableId &&
+          destination.droppableId === source.droppableId
+        ) {
+          lists = {
+            ...list,
+            cards: [...list.cards.toSpliced(destination.index, 0, card)],
           };
         }
 
