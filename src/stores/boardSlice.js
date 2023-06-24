@@ -51,4 +51,4 @@ export default boardSlice.reducer;
 export const { addBoard, setActive, setFavorite, deleteBoard } =
   boardSlice.actions;
 
-console.log(initialData);
+// console.log(initialData);

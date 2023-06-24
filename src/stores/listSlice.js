@@ -21,6 +21,14 @@ const listSlice = createSlice({
     deleteList(state, action) {
       return state.filter((data) => data.id !== action.payload.id);
     },
+    renameList(state, action) {
+      state = state.map((list) =>
+        list.id === action.payload.id
+          ? { ...list, title: action.payload.newTitle }
+          : list
+      );
+      return state;
+    },
 
     // cards
     addCard(state, action) {
@@ -110,4 +118,5 @@ const listSlice = createSlice({
 });
 
 export default listSlice.reducer;
-export const { addCard, addList, deleteList, dropCard } = listSlice.actions;
+export const { addCard, addList, deleteList, dropCard, renameList } =
+  listSlice.actions;
