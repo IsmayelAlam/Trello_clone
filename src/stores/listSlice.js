@@ -57,23 +57,22 @@ const listSlice = createSlice({
         return;
 
       const card = state.reduce((cards, list) => {
-        if (list.id === source.droppableId)
-          [cards] = list.cards.filter((card) =>
-            card.id === draggableId ? true : false
-          );
+        if (list.id === source.droppableId) {
+          cards = list.cards[source.index];
+        }
         return cards;
-      });
-      console.log(action);
+      }, []);
+      console.log(card);
 
       state = state.map((list) => {
         let lists = list;
 
-        if (list.id === destination.droppableId) {
-          lists = {
-            ...list,
-            cards: [...list.cards, card],
-          };
-        }
+        // if (list.id === destination.droppableId) {
+        //   lists = {
+        //     ...list,
+        //     cards: [...list.cards, card],
+        //   };
+        // }
 
         if (list.id === source.droppableId) {
           lists = {
