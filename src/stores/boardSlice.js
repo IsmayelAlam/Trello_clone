@@ -50,7 +50,16 @@ const boardSlice = createSlice({
 
   extraReducers(builder) {
     builder.addCase(addList, (state, action) => {
-      console.log(state);
+      state = state.map((board) =>
+        board.id === action.payload.id
+          ? board.lists.push({
+              id: nanoid(),
+              title: action.payload.title,
+              date: Date.now(),
+              cards: [],
+            })
+          : board
+      );
     });
   },
 });

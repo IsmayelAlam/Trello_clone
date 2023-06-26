@@ -17,10 +17,26 @@ export const initialData = [
             id: nanoid(),
             title: "card 01",
             date: Date.now(),
-            description: "",
-            label: [],
-            taskList: [],
-            comment: [],
+            description:
+              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit nam cum assumenda quas officiis sint temporibus illum modi eum nulla? Quae corporis vero non autem eius dolorum doloribus fuga perferendis!",
+            label: [
+              {
+                type: "vip",
+                color: "#ff5412",
+              },
+            ],
+            taskList: [
+              {
+                marked: true,
+                task: "task 01",
+              },
+            ],
+            comment: [
+              {
+                data: Date.now(),
+                comment: "comment 01",
+              },
+            ],
           },
           {
             id: nanoid(),

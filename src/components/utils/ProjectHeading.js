@@ -7,10 +7,15 @@ import { useState } from "react";
 export default function ProjectHeading() {
   const boards = useSelector((state) => state.board);
   const [activeBoard] = boards.filter((board) => board.active);
+
+  const title = activeBoard ? activeBoard.title : "";
+  const id = activeBoard ? activeBoard.id : "";
+  const favorite = activeBoard ? activeBoard.favorite : "";
+
   const dispatch = useDispatch();
 
   const [rename, setRename] = useState(false);
-  const [newTitle, setTitle] = useState(activeBoard.title);
+  const [newTitle, setTitle] = useState(title);
 
   const handleChange = (e) => setTitle(e.target.value);
   const handleRename = (e) => {
@@ -21,11 +26,11 @@ export default function ProjectHeading() {
   let content = (
     <header
       className="w-screen fixed bg-slate-700 text-white h-14 flex items-center justify-start gap-2"
-      key={activeBoard.id}
+      key={id}
     >
       <h1
         board={activeBoard}
-        key={activeBoard.id}
+        key={id}
         className="text-xl ml-10 capitalize"
         onClick={handleRename}
       >
@@ -39,16 +44,18 @@ export default function ProjectHeading() {
             value={newTitle}
           />
         ) : (
-          activeBoard.title
+          title
         )}
       </h1>
-      <div onClick={() => dispatch(setFavorite(activeBoard.id))}>
-        {activeBoard.favorite ? (
-          <AiFillStar className="h-7 w-7 cursor-pointer p-1" />
-        ) : (
-          <AiOutlineStar className="h-7 w-7 cursor-pointer p-1" />
-        )}
-      </div>
+      {activeBoard && (
+        <div onClick={() => dispatch(setFavorite(id))}>
+          {favorite ? (
+            <AiFillStar className="h-7 w-7 cursor-pointer p-1" />
+          ) : (
+            <AiOutlineStar className="h-7 w-7 cursor-pointer p-1" />
+          )}
+        </div>
+      )}
     </header>
   );
 

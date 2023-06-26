@@ -15,9 +15,11 @@ export default function TaskHeading({ list, collapse }) {
   const [expend, setExpend] = useState(false);
   const [rename, setRename] = useState(false);
   const [newTitle, setTitle] = useState(list.title);
+
   const dispatch = useDispatch();
 
   const handleChange = (e) => setTitle(e.target.value);
+
   const handleRename = (e) => {
     setRename(!rename);
     setExpend(false);
@@ -25,8 +27,11 @@ export default function TaskHeading({ list, collapse }) {
   };
 
   let listAction;
-  let classes =
-    "h-10 w-48 m-2 pl-10 text-center p-2 rounded bg-slate-700 flex items-center justify-start capitalize";
+  let classes = {
+    buttons:
+      "h-10 w-48 m-2 pl-10 text-center p-2 rounded bg-slate-700 flex items-center justify-start capitalize",
+    icon: "h-7 w-7 cursor-pointer p-1",
+  };
 
   if (expend)
     listAction = (
@@ -41,21 +46,24 @@ export default function TaskHeading({ list, collapse }) {
         <hr />
 
         <button
-          className={classes}
+          className={classes.buttons}
           onClickCapture={collapse}
           onClick={setExpend.bind(null, !expend)}
         >
-          <AiFillPlusSquare className="h-7 w-7 cursor-pointer p-1" />
+          <AiFillPlusSquare className={classes.icon} />
           <span>add Card</span>
         </button>
 
-        <button className={classes} onClick={handleRename}>
-          <AiFillEdit className="h-7 w-7 cursor-pointer p-1" />
+        <button className={classes.buttons} onClick={handleRename}>
+          <AiFillEdit className={classes.icon} />
           <span>Rename</span>
         </button>
 
-        <button className={classes} onClick={() => dispatch(deleteList(list))}>
-          <AiFillDelete className="h-7 w-7 cursor-pointer p-1" />
+        <button
+          className={classes.buttons}
+          onClick={() => dispatch(deleteList(list))}
+        >
+          <AiFillDelete className={classes.icon} />
           <span>Delete</span>
         </button>
       </div>
