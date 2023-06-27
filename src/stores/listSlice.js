@@ -57,53 +57,64 @@ const listSlice = createSlice({
     dropCard(state, action) {
       const { source, destination } = action.payload;
 
-      if (
-        !destination ||
-        (destination.droppableId === source.droppableId &&
-          destination.index === source.index)
-      )
-        return;
+      if (action.payload.type === "list") {
+        if (!destination || destination.index === source.index) return;
 
-      let card = state.reduce((cards, list) => {
-        if (list.id === source.droppableId) cards = list.cards[source.index];
-        return cards;
-      }, []);
+        state = state
+          .toSpliced(source.index, 1)
+          .toSpliced(destination.index, 0, state[source.index]);
 
-      state = state.map((list) => {
-        if (list.id === source.droppableId) {
-          list = {
-            ...list,
-            cards: [...list.cards.toSpliced(source.index, 1)],
-          };
-        }
-        return list;
-      });
+        return state;
+      }
 
-      state = state.map((list) => {
-        let lists = list;
-
+      if (action.payload.type === "card") {
         if (
-          list.id === destination.droppableId &&
-          destination.droppableId !== source.droppableId
-        ) {
-          lists = {
-            ...list,
-            cards: [...list.cards.toSpliced(destination.index, 0, card)],
-          };
-        }
-        if (
-          list.id === source.droppableId &&
-          destination.droppableId === source.droppableId
-        ) {
-          lists = {
-            ...list,
-            cards: [...list.cards.toSpliced(destination.index, 0, card)],
-          };
-        }
-        return lists;
-      });
+          !destination ||
+          (destination.droppableId === source.droppableId &&
+            destination.index === source.index)
+        )
+          return;
 
-      return state;
+        let card = state.reduce((cards, list) => {
+          if (list.id === source.droppableId) cards = list.cards[source.index];
+          return cards;
+        }, []);
+
+        state = state.map((list) => {
+          if (list.id === source.droppableId) {
+            list = {
+              ...list,
+              cards: [...list.cards.toSpliced(source.index, 1)],
+            };
+          }
+          return list;
+        });
+
+        state = state.map((list) => {
+          let lists = list;
+
+          if (
+            list.id === destination.droppableId &&
+            destination.droppableId !== source.droppableId
+          ) {
+            lists = {
+              ...list,
+              cards: [...list.cards.toSpliced(destination.index, 0, card)],
+            };
+          }
+          if (
+            list.id === source.droppableId &&
+            destination.droppableId === source.droppableId
+          ) {
+            lists = {
+              ...list,
+              cards: [...list.cards.toSpliced(destination.index, 0, card)],
+            };
+          }
+          return lists;
+        });
+        return state;
+      }
     },
   },
 

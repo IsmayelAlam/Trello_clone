@@ -4,6 +4,7 @@ import AddNewTask from "../utils/AddNewTask";
 import Button from "../utils/Buttons";
 import TaskCard from "./TaskCard";
 import TaskHeading from "../utils/TaskHeading";
+import { Draggable } from "react-beautiful-dnd";
 
 export default function TaskList({ list, index }) {
   const [expend, setExpend] = useState(false);
@@ -11,16 +12,27 @@ export default function TaskList({ list, index }) {
   const handleClick = () => setExpend(!expend);
 
   return (
-    <li className="my-5 mx-2 bg-slate-950 rounded-lg shadow-md w-72 max-h-[90%] flex flex-col">
-      <TaskHeading list={list} collapse={handleClick} />
+    <Draggable key={list.id} draggableId={list.id} index={index}>
+      {(provided) => {
+        return (
+          <li
+            className="my-5 mx-2 bg-slate-950 rounded-lg shadow-md w-72 max-h-[90%] flex flex-col"
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            ref={provided.innerRef}
+          >
+            <TaskHeading list={list} collapse={handleClick} />
 
-      <TaskCard cards={list.cards} index={index} id={list.id} />
+            <TaskCard cards={list.cards} index={index} id={list.id} />
 
-      {expend ? (
-        <AddNewTask type="card" id={list.id} collapse={handleClick} />
-      ) : (
-        <Button type="card" onClick={handleClick} />
-      )}
-    </li>
+            {expend ? (
+              <AddNewTask type="card" id={list.id} collapse={handleClick} />
+            ) : (
+              <Button type="card" onClick={handleClick} />
+            )}
+          </li>
+        );
+      }}
+    </Draggable>
   );
 }

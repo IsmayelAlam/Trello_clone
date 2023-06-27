@@ -3,7 +3,7 @@ import { Droppable } from "react-beautiful-dnd";
 
 export default function TaskCard({ cards, index, id }) {
   return (
-    <Droppable droppableId={id}>
+    <Droppable droppableId={id} type="card">
       {(provided) => {
         return (
           <ul

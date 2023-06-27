@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { BsChat, BsPencil, BsTextLeft, BsListCheck } from "react-icons/bs";
 import { Draggable } from "react-beautiful-dnd";
-// import TaskModal from "./TaskModal";
+import TaskModal from "./TaskModal";
 
 export default function Tasks({ card, index, children }) {
   const [show, setShow] = useState(false);
-  // const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState(false);
 
   return (
     <Draggable key={card.id} draggableId={card.id} index={index}>
@@ -19,7 +19,7 @@ export default function Tasks({ card, index, children }) {
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
-            // onClick={setModal.bind(null, !modal)}
+            onClick={setModal.bind(null, !modal)}
           >
             <div
               className={`px-2 py-1 m-2 bg-gray-800 rounded capitalize shadow cursor-pointer relative z-0 ${
