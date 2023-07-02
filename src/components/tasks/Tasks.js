@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BsChat, BsPencil, BsTextLeft, BsListCheck } from "react-icons/bs";
 import { Draggable } from "react-beautiful-dnd";
-import TaskModal from "./TaskModal";
+// import TaskModal from "./TaskModal";
 
 export default function Tasks({ card, index, children }) {
   const [show, setShow] = useState(false);
@@ -12,7 +12,6 @@ export default function Tasks({ card, index, children }) {
       {(provided, snap) => {
         return (
           <li
-            // className={}
             onMouseEnter={() => setShow(!show)}
             onMouseLeave={() => setShow(!show)}
             key={card}

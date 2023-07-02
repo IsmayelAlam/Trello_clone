@@ -36,7 +36,7 @@ export default function Board() {
           {(provided) => {
             return (
               <ul
-                className="w-fit h-min flex items-start ml-5"
+                className="w-fit h-screen flex items-start ml-5"
                 {...provided.droppableProps}
                 ref={provided.innerRef}
               >
