@@ -1,19 +1,25 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { createPortal } from "react-dom";
 import { BsSave, BsTrash } from "react-icons/bs";
 
-import { renameBoard } from "../../stores";
-import { useState } from "react";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import Clock from "./Clock";
+import Modal from "./Modal";
 
 export default function ProjectHeading() {
-  const [user, setUser] = useLocalStorage("user", "username");
+  const [user, setUser] = useLocalStorage("user", "");
+  const [usernameChange, setUsernameChange] = useState(Boolean(user) || false);
 
-  console.log(user);
+  const portal = document.getElementById("portal");
 
   let content = (
     <header className="w-screen fixed bg-slate-700/50 text-white h-14 flex items-center justify-between pr-10 gap-2 shadow">
-      <h1 className="text-xl ml-10 capitalize">{`${user}'s Board`}</h1>
+      <h1
+        className="text-xl ml-10 capitalize cursor-pointer"
+        onClick={() => setUsernameChange(false)}
+      >
+        {Boolean(user) ? `${user}'s Board` : "kanban board"}
+      </h1>
 
       <Clock />
 
@@ -23,6 +29,11 @@ export default function ProjectHeading() {
           <BsSave className="w-4 h-4" />
           <span>save</span>
         </button>
+        {usernameChange ||
+          createPortal(
+            <Modal setUser={setUser} setUsernameChange={setUsernameChange} />,
+            portal
+          )}
       </div>
     </header>
   );
