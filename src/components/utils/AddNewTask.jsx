@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { GoX } from "react-icons/go";
 import { useDispatch } from "react-redux";
-import { addCard, addList, addBoard } from "../../stores";
+import { addCard, addList } from "../../stores";
 
 export default function AddNewTask({ type, id, collapse, classes }) {
   const [title, setTitle] = useState("");
@@ -16,10 +16,7 @@ export default function AddNewTask({ type, id, collapse, classes }) {
       action = addCard({ id, title });
       break;
     case "list":
-      action = addList({ id, title });
-      break;
-    case "board":
-      action = addBoard(title);
+      action = addList({ title });
       break;
     default:
       return null;

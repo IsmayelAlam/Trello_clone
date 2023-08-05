@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { BsChat, BsPencil, BsTextLeft, BsListCheck } from "react-icons/bs";
 import { Draggable } from "react-beautiful-dnd";
-// import TaskModal from "./TaskModal";
+import TaskModal from "./TaskModal";
+import { createPortal } from "react-dom";
+
+const portal = document.getElementById("portal");
 
 export default function Tasks({ card, index, children }) {
   const [show, setShow] = useState(false);
@@ -40,6 +43,7 @@ export default function Tasks({ card, index, children }) {
                 <BsChat className="py-1 h-6 w-6" />
               </div>
             </div>
+            {modal && createPortal(<TaskModal card={card} />, portal)}
           </li>
         );
       }}

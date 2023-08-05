@@ -1,7 +1,4 @@
-import { GoProject } from "react-icons/go";
-import { useSelector } from "react-redux";
-import { useState } from "react";
-import { BsFillPlusSquareFill, BsPersonWorkspace } from "react-icons/bs";
+import { BsPersonWorkspace } from "react-icons/bs";
 
 import useLocalStorage from "../../hooks/useLocalStorage";
 
@@ -17,11 +14,13 @@ export default function SideBarLeft() {
 
       <hr />
 
-      <ul className="max-h-96 overflow-y-scroll scrollbar"></ul>
+      <ul className="max-h-96 overflow-y-scroll scrollbar">
+        <li>preview board</li>
+        <li>add new list</li>
+        <li>save board</li>
+        <li>delete board</li>
+        <li>change background</li>
+      </ul>
     </div>
   );
 }
-
-//  {boards.map((board) => (
-//   <BoardList board={board} key={board.id} />
-// ))}

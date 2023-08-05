@@ -6,11 +6,11 @@ import useLocalStorage from "../../hooks/useLocalStorage";
 import Clock from "./Clock";
 import Modal from "./Modal";
 
+const portal = document.getElementById("portal");
+
 export default function ProjectHeading() {
   const [user, setUser] = useLocalStorage("user", "");
   const [usernameChange, setUsernameChange] = useState(Boolean(user) || false);
-
-  const portal = document.getElementById("portal");
 
   let content = (
     <header className="w-screen fixed bg-slate-700/50 text-white h-14 flex items-center justify-between pr-10 gap-2 shadow">

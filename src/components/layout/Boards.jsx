@@ -7,32 +7,23 @@ import Button from "../utils/Buttons";
 import AddNewTask from "../utils/AddNewTask";
 import { useDispatch } from "react-redux";
 import { dropCard } from "../../stores";
+import { nanoid } from "@reduxjs/toolkit";
 
 export default function Board() {
-  const boards = useSelector((state) => state.board);
   const lists = useSelector((state) => state.list);
-
-  const [activeBoard] = boards.filter((board) => board.active);
-
-  // let type;
 
   const dispatch = useDispatch();
 
   const [expend, setExpend] = useState(false);
 
   console.log(lists);
-  // console.log(boards);
 
   const handleClick = () => setExpend(!expend);
 
   return (
     <DragDropContext onDragEnd={(task) => dispatch(dropCard(task))}>
       <div className="w-fit flex items-start mt-14">
-        <Droppable
-          droppableId={activeBoard.id}
-          type="list"
-          direction="horizontal"
-        >
+        <Droppable droppableId={nanoid()} type="list" direction="horizontal">
           {(provided) => {
             return (
               <ul
@@ -49,11 +40,11 @@ export default function Board() {
           }}
         </Droppable>
         {expend ? (
-          <AddNewTask type="list" collapse={handleClick} id={activeBoard.id} />
+          <AddNewTask type="list" collapse={handleClick} />
         ) : (
           <Button type="list" onClick={handleClick} />
         )}
-      </div>{" "}
+      </div>
     </DragDropContext>
   );
 }

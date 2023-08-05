@@ -1,13 +1,10 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 import { initialData } from "./testData";
-import { addBoard, deleteBoard, setActive } from "./boardSlice";
-
-const [initData] = initialData.filter((date) => date.active);
 
 const listSlice = createSlice({
   name: "list",
-  initialState: initData.lists,
+  initialState: initialData,
   reducers: {
     addList(state, action) {
       state = state.push({
@@ -56,6 +53,8 @@ const listSlice = createSlice({
 
     dropCard(state, action) {
       const { source, destination } = action.payload;
+
+      console.log(action);
 
       if (action.payload.type === "list") {
         if (!destination || destination.index === source.index) return;
@@ -116,15 +115,6 @@ const listSlice = createSlice({
         return state;
       }
     },
-  },
-
-  extraReducers(builder) {
-    builder.addCase(
-      setActive,
-      (state, action) => (state = action.payload.lists)
-    );
-    builder.addCase(deleteBoard, (state, action) => (state = []));
-    builder.addCase(addBoard, (state, action) => (state = []));
   },
 });
 
