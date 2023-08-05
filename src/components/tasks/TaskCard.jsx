@@ -1,4 +1,4 @@
-import Tasks from "../tasks/Tasks";
+import Tasks from "./Tasks";
 import { Droppable } from "react-beautiful-dnd";
 
 export default function TaskCard({ cards, index, id }) {
