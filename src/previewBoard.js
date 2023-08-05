@@ -1,6 +1,6 @@
 import { nanoid } from "@reduxjs/toolkit";
 
-export const initialData = [
+export const previewBoard = [
   {
     id: nanoid(),
     date: Date.now(),

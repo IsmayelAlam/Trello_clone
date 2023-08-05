@@ -1,11 +1,18 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
-import { initialData } from "./testData";
+import useLocalStorage from "../hooks/useLocalStorage";
+
+const storedValue = localStorage.getItem("list");
+const data = storedValue ? JSON.parse(storedValue) : [];
 
 const listSlice = createSlice({
   name: "list",
-  initialState: initialData,
+  initialState: data,
   reducers: {
+    setBoard(state, action) {
+      state = action.payload;
+      return state;
+    },
     addList(state, action) {
       state = state.push({
         id: nanoid(),
@@ -53,8 +60,6 @@ const listSlice = createSlice({
 
     dropCard(state, action) {
       const { source, destination } = action.payload;
-
-      console.log(action);
 
       if (action.payload.type === "list") {
         if (!destination || destination.index === source.index) return;
@@ -119,5 +124,5 @@ const listSlice = createSlice({
 });
 
 export default listSlice.reducer;
-export const { addCard, addList, deleteList, dropCard, renameList } =
+export const { addCard, addList, deleteList, dropCard, renameList, setBoard } =
   listSlice.actions;
