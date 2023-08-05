@@ -1,6 +1,5 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
-import useLocalStorage from "../hooks/useLocalStorage";
 
 const storedValue = localStorage.getItem("list");
 const data = storedValue ? JSON.parse(storedValue) : [];

@@ -15,6 +15,8 @@ export default function ProjectHeading({ setSaveList, currentList }) {
   const [usernameChange, setUsernameChange] = useState(Boolean(user) || false);
   const dispatch = useDispatch();
 
+  document.title = Boolean(user) ? `${user}'s Board` : "kanban board";
+
   let content = (
     <header className="w-screen fixed bg-slate-700/50 text-white h-14 flex items-center justify-between pr-10 gap-2 shadow">
       <h1

@@ -14,7 +14,7 @@ function App() {
   );
 
   useEffect(() => {
-    setClose(() => JSON.stringify(saveList) === JSON.stringify(currentList));
+    setClose(JSON.stringify(saveList) === JSON.stringify(currentList));
   }, [currentList, saveList, close]);
 
   window.onbeforeunload = () => close && alert();
