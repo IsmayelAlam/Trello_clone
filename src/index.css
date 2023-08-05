@@ -17,3 +17,10 @@
     background: #5a5c61;
   }
 }
+
+body {
+  background-image: url("https://images.unsplash.com/photo-1690812099871-47b7f71c93af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1185&q=80");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center;
+}

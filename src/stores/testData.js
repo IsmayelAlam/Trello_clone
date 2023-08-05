@@ -4,7 +4,7 @@ export const initialData = [
   {
     id: nanoid(),
     date: Date.now(),
-    title: "test project 01",
+    title: "kanban board",
     favorite: true,
     active: true,
     lists: [

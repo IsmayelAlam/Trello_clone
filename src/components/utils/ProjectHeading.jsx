@@ -1,61 +1,29 @@
 import { useDispatch, useSelector } from "react-redux";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { BsSave, BsTrash } from "react-icons/bs";
 
-import { renameBoard, setFavorite } from "../../stores";
+import { renameBoard } from "../../stores";
 import { useState } from "react";
+import useLocalStorage from "../../hooks/useLocalStorage";
+import Clock from "./Clock";
 
 export default function ProjectHeading() {
-  const boards = useSelector((state) => state.board);
-  const [activeBoard] = boards.filter((board) => board.active);
+  const [user, setUser] = useLocalStorage("user", "username");
 
-  const title = activeBoard ? activeBoard.title : "";
-  const id = activeBoard ? activeBoard.id : "";
-  const favorite = activeBoard ? activeBoard.favorite : "";
-
-  const dispatch = useDispatch();
-
-  const [rename, setRename] = useState(false);
-  const [newTitle, setTitle] = useState(title);
-
-  const handleChange = (e) => setTitle(e.target.value);
-  const handleRename = (e) => {
-    setRename(!rename);
-    dispatch(renameBoard({ id: activeBoard.id, newTitle }));
-  };
+  console.log(user);
 
   let content = (
-    <header
-      className="w-screen fixed bg-slate-700 text-white h-14 flex items-center justify-start gap-2"
-      key={id}
-    >
-      <h1
-        board={activeBoard}
-        key={id}
-        className="text-xl ml-10 capitalize"
-        onClick={handleRename}
-      >
-        {rename ? (
-          <input
-            type="text"
-            autoFocus
-            className="rounded text-black"
-            onBlur={handleRename}
-            onChange={handleChange}
-            value={newTitle}
-          />
-        ) : (
-          title
-        )}
-      </h1>
-      {activeBoard && (
-        <div onClick={() => dispatch(setFavorite(id))}>
-          {favorite ? (
-            <AiFillStar className="h-7 w-7 cursor-pointer p-1" />
-          ) : (
-            <AiOutlineStar className="h-7 w-7 cursor-pointer p-1" />
-          )}
-        </div>
-      )}
+    <header className="w-screen fixed bg-slate-700/50 text-white h-14 flex items-center justify-between pr-10 gap-2 shadow">
+      <h1 className="text-xl ml-10 capitalize">{`${user}'s Board`}</h1>
+
+      <Clock />
+
+      <div className="flex items-center gap-4">
+        <BsTrash className="border-2 w-7 h-7 p-1 rounded-lg cursor-pointer" />
+        <button className="bg-white px-4 py-1 text-black rounded-md hover:bg-slate-100 font-semibold uppercase flex items-center justify-center gap-1">
+          <BsSave className="w-4 h-4" />
+          <span>save</span>
+        </button>
+      </div>
     </header>
   );
 
