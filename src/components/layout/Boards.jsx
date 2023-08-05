@@ -20,7 +20,7 @@ export default function Board() {
 
   const [expend, setExpend] = useState(false);
 
-  // console.log(lists);
+  console.log(lists);
   // console.log(boards);
 
   const handleClick = () => setExpend(!expend);

@@ -6,7 +6,7 @@ export const initialData = [
     date: Date.now(),
     title: "kanban board",
     favorite: true,
-    active: true,
+    active: false,
     lists: [
       {
         id: nanoid(),
@@ -133,7 +133,7 @@ export const initialData = [
     date: Date.now(),
     title: "test project 02",
     favorite: false,
-    active: false,
+    active: true,
     lists: [
       {
         id: nanoid(),
