@@ -42,6 +42,10 @@ const listSlice = createSlice({
               id: nanoid(),
               title: action.payload.title,
               date: Date.now(),
+              description: "",
+              label: [],
+              taskList: [],
+              notes: [],
             })
           : list
       );
@@ -87,6 +91,37 @@ const listSlice = createSlice({
             cards: list.cards.map((card) =>
               card.id === id.card
                 ? { ...card, description: newDescription }
+                : card
+            ),
+          };
+        } else {
+          return list;
+        }
+      });
+      // console.log(action.payload);
+
+      return state;
+    },
+
+    addCardTask(state, action) {
+      const { id, newTask } = action.payload;
+
+      state = state.map((list) => {
+        if (list.id === id.list) {
+          return {
+            ...list,
+            cards: list.cards.map((card) =>
+              card.id === id.card
+                ? {
+                    ...card,
+                    taskList: [
+                      {
+                        marked: false,
+                        title: newTask,
+                      },
+                      ...card.taskList,
+                    ],
+                  }
                 : card
             ),
           };
@@ -175,4 +210,5 @@ export const {
   setBoard,
   renameCard,
   updateCardDescription,
+  addCardTask,
 } = listSlice.actions;
