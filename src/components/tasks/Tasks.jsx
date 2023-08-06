@@ -34,7 +34,7 @@ export default function Tasks({ card, index, listId }) {
               </div>
               <h2 className="overflow-hidden">{card.title}</h2>
               <div className="flex items-center gap-2">
-                <BsTextLeft className="py-1 h-6 w-6" />
+                {card.description && <BsTextLeft className="py-1 h-6 w-6" />}
                 <BsListCheck className="py-1 h-6 w-6" />
                 <BsChat className="py-1 h-6 w-6" />
               </div>

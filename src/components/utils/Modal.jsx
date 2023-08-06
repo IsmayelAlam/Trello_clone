@@ -4,6 +4,13 @@ import { MdOutlineCancel } from "react-icons/md";
 export default function Modal({ setUser, setUsernameChange }) {
   const [username, setUsername] = useState("");
 
+  const handleRename = (e) => {
+    e.preventDefault();
+    if (!username) return;
+    setUser(username);
+    setUsernameChange(true);
+  };
+
   return (
     <div className="w-screen h-screen absolute inset-0 backdrop-blur-sm overflow-hidden flex items-center justify-center">
       <div className="w-96 p-5 bg-white flex flex-col items-center justify-center rounded-lg shadow-lg">
@@ -17,20 +24,16 @@ export default function Modal({ setUser, setUsernameChange }) {
         <input
           type="text"
           required
-          onChange={(e) => {
-            setUsername(e.target.value);
-          }}
+          autoFocus
           className="h-10 bg-slate-200 rounded-lg border-2 border-red-300 valid:border-green-300 outline-none px-2"
           value={username}
-          autoFocus
+          onChange={(e) => setUsername(e.target.value)}
+          onKeyDown={(e) => e.code === "Enter" && handleRename(e)}
+          onBlur={handleRename}
         />
         <button
           className="bg-orange-400 my-5 py-2 px-10 rounded-full uppercase font-semibold text-white shadow active:bg-orange-500"
-          onClick={() => {
-            if (!username) return;
-            setUsernameChange(true);
-            setUser(username);
-          }}
+          onClick={handleRename}
         >
           add
         </button>
