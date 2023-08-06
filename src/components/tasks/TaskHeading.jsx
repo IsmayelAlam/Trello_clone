@@ -72,7 +72,7 @@ export default function TaskHeading({ list, collapse }) {
   return (
     <header className="flex p-2 items-center justify-between overflow-visible">
       <h2
-        className="text-lg font-semibold capitalize px-4 rounded-lg min-h-[1rem] cursor-pointer"
+        className="text-lg font-semibold capitalize px-4 rounded-lg min-h-[1.5rem] cursor-pointer hover:bg-slate-800"
         onClick={handleRename}
       >
         {rename ? (

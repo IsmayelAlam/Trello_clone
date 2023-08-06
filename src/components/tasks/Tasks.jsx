@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Draggable } from "react-beautiful-dnd";
-import { BsChat, BsListCheck } from "react-icons/bs";
+import { BsChat, BsListCheck, BsListTask } from "react-icons/bs";
 import { CiStickyNote } from "react-icons/ci";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 
@@ -40,7 +40,7 @@ export default function Tasks({ card, index, listId }) {
                 {card.description && (
                   <AiOutlineInfoCircle className="h-4 w-4" />
                 )}
-                {card.taskList && <BsListCheck className="h-4 w-4" />}
+                {card.taskList && <BsListTask className="h-4 w-4" />}
                 {card.notes && <CiStickyNote className="h-4 w-4" />}
               </div>
             </div>

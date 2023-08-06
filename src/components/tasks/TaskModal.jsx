@@ -3,6 +3,7 @@ import { MdOutlineCancel } from "react-icons/md";
 import CardHeading from "../cards/CardHeading";
 import { useRef } from "react";
 import CardDescription from "../cards/CardDescription";
+import CardTasks from "../cards/CardTasks";
 
 export default function TaskModal({ card, listId, collapse }) {
   const ref = useRef();
@@ -26,11 +27,19 @@ export default function TaskModal({ card, listId, collapse }) {
           <CardHeading card={card} id={id} />
           <p>label</p>
           <CardDescription card={card} id={id} />
-          <p>tasks</p>
+          <CardTasks card={card} id={id} />
         </div>
         <div>
-          <div>
-            <button>rename</button>
+          <div className="flex flex-col gap-1 text-md font-semibold mb-4 w-max">
+            <button className="outline-none py-1 px-2 w-full bg-slate-300 hover:bg-slate-400 active:bg-slate-100 rounded-md">
+              Rename Card
+            </button>
+            <button className="outline-none py-1 px-2 w-full bg-slate-300 hover:bg-slate-400 active:bg-slate-100 rounded-md">
+              Delete Card
+            </button>
+            <button className="outline-none py-1 px-2 w-full bg-slate-300 hover:bg-slate-400 active:bg-slate-100 rounded-md">
+              Update Description
+            </button>
           </div>
           <p>notes</p>
         </div>

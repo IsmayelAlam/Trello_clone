@@ -8,7 +8,7 @@ export default function CardDescription({ card, id }) {
   const [newDescription, setDescription] = useState(card.description);
   const dispatch = useDispatch();
 
-  const empty = <span>&mdash; add description</span>;
+  const empty = <span className="text-sm">&mdash; </span>;
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ export default function CardDescription({ card, id }) {
 
       <div
         onClick={() => setUpdate(true)}
-        className="cursor-pointer w-full hover:bg-slate-700 px-3 py-1 rounded-lg"
+        className="cursor-pointer w-full hover:bg-slate-700 px-2 py-1 rounded-lg"
       >
         {update ? (
           <textarea

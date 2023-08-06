@@ -21,7 +21,16 @@ export const previewBoard = [
         taskList: [
           {
             marked: true,
-            task: "task 01",
+            title:
+              "task 01Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit nam cum assumenda quas officLorem ipsum dolor sit amet consectetur adipisicing elit. Odit nam cum assumenda quas offic",
+          },
+          {
+            marked: false,
+            title: "task 02",
+          },
+          {
+            marked: false,
+            title: "task 03",
           },
         ],
         notes: [
