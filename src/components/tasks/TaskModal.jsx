@@ -9,7 +9,6 @@ export default function TaskModal({ card, listId, collapse }) {
   const ref = useRef();
 
   const id = { card: card.id, list: listId };
-  console.log(card);
 
   return (
     <div

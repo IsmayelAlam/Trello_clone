@@ -20,7 +20,7 @@ export default function CardDescription({ card, id }) {
     <div className="text-white space-y-2">
       <div className="flex items-center gap-1 text-md border-b-2 w-fit my-2">
         <AiOutlineInfoCircle />
-        <p>description</p>
+        <p>Description</p>
       </div>
 
       <div

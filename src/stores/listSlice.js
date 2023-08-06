@@ -98,7 +98,6 @@ const listSlice = createSlice({
           return list;
         }
       });
-      // console.log(action.payload);
 
       return state;
     },
@@ -114,13 +113,21 @@ const listSlice = createSlice({
               card.id === id.card
                 ? {
                     ...card,
-                    taskList: [
-                      {
-                        marked: false,
-                        title: newTask,
-                      },
-                      ...card.taskList,
-                    ],
+                    taskList:
+                      card.taskList?.length > 0
+                        ? [
+                            {
+                              marked: false,
+                              title: newTask,
+                            },
+                            ...card.taskList,
+                          ]
+                        : [
+                            {
+                              marked: false,
+                              title: newTask,
+                            },
+                          ],
                   }
                 : card
             ),
@@ -129,7 +136,30 @@ const listSlice = createSlice({
           return list;
         }
       });
-      // console.log(action.payload);
+
+      return state;
+    },
+
+    deleteCardTask(state, action) {
+      const { id, index } = action.payload;
+
+      state = state.map((list) => {
+        if (list.id === id.list) {
+          return {
+            ...list,
+            cards: list.cards.map((card) =>
+              card.id === id.card
+                ? {
+                    ...card,
+                    taskList: card.taskList.filter((task, id) => id !== index),
+                  }
+                : card
+            ),
+          };
+        } else {
+          return list;
+        }
+      });
 
       return state;
     },
@@ -211,4 +241,5 @@ export const {
   renameCard,
   updateCardDescription,
   addCardTask,
+  deleteCardTask,
 } = listSlice.actions;

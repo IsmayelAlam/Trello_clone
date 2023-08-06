@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BsListTask, BsTrash } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import { addCardTask } from "../../stores";
+import { addCardTask, deleteCardTask } from "../../stores";
 
 export default function CardTasks({ card, id }) {
   const [newTask, setNewTask] = useState("");
@@ -58,7 +58,7 @@ export default function CardTasks({ card, id }) {
                 />
                 <span>{task.title}</span>
               </div>
-              <div>
+              <div onClick={() => dispatch(deleteCardTask({ id, index }))}>
                 <BsTrash className="w-4 h-4 mx-2" />
               </div>
             </li>
