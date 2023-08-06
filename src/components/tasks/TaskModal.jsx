@@ -6,16 +6,13 @@ import { useRef, useState } from "react";
 export default function TaskModal({ card, listId, collapse }) {
   const ref = useRef();
 
-  const handleClose = (e) => {
-    if (ref.current === e.target) collapse();
-  };
+  const id = { card: card.id, list: listId };
 
-  console.log(card, listId);
   return (
     <div
       className="fixed inset-0 backdrop-blur-sm z-100 flex items-center justify-center"
       ref={ref}
-      onClick={handleClose}
+      onClick={(e) => (ref.current === e.target ? collapse() : null)}
     >
       <div className="bg-slate-800 rounded-lg shadow-md w-[60%] h-[90%] px-10 py-14 overflow-hidden grid grid-cols-[3fr,1fr] relative">
         <MdOutlineCancel
@@ -24,13 +21,15 @@ export default function TaskModal({ card, listId, collapse }) {
         />
 
         <div>
-          <CardHeading title={card.title} />
+          <CardHeading title={card.title} id={id} />
           <p>label</p>
           <p>details</p>
           <p>tasks</p>
         </div>
         <div>
-          <p>buttons</p>
+          <div>
+            <button>rename</button>
+          </div>
           <p>notes</p>
         </div>
       </div>

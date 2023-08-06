@@ -19,7 +19,6 @@ export default function Modal({ setUser, setUsernameChange }) {
           required
           onChange={(e) => {
             setUsername(e.target.value);
-            console.log(e);
           }}
           className="h-10 bg-slate-200 rounded-lg border-2 border-red-300 valid:border-green-300 outline-none px-2"
           value={username}

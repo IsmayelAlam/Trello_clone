@@ -23,7 +23,7 @@ export default function ProjectHeading({ saveList, setSaveList, currentList }) {
         className="text-xl ml-10 capitalize cursor-pointer"
         onClick={() => setUsernameChange(false)}
       >
-        {Boolean(user) ? `${user}'s Board` : "kanban board"}
+        {Boolean(user) ? `${user}'s Board` : "work board"}
       </h1>
 
       <Clock />
@@ -34,7 +34,7 @@ export default function ProjectHeading({ saveList, setSaveList, currentList }) {
             setSaveList([]);
             dispatch(setBoard([]));
           }}
-          className={saveList.length || "hidden"}
+          className={saveList.length || "invisible transition-all duration-150"}
         >
           <BsTrash className="border-2 w-7 h-7 p-1 rounded-lg cursor-pointer" />
         </button>

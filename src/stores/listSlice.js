@@ -58,6 +58,26 @@ const listSlice = createSlice({
       );
     },
 
+    renameCard(state, action) {
+      const { id, newTitle } = action.payload;
+
+      state = state.map((list) => {
+        if (list.id === id.list) {
+          return {
+            ...list,
+            cards: list.cards.map((card) =>
+              card.id === id.card ? { ...card, title: newTitle } : card
+            ),
+          };
+        } else {
+          return list;
+        }
+      });
+      // console.log(action.payload);
+
+      return state;
+    },
+
     // list and card functions
     dropCard(state, action) {
       const { source, destination } = action.payload;
@@ -125,5 +145,12 @@ const listSlice = createSlice({
 });
 
 export default listSlice.reducer;
-export const { addCard, addList, deleteList, dropCard, renameList, setBoard } =
-  listSlice.actions;
+export const {
+  addCard,
+  addList,
+  deleteList,
+  dropCard,
+  renameList,
+  setBoard,
+  renameCard,
+} = listSlice.actions;

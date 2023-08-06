@@ -23,7 +23,7 @@ export default function SideBarLeft() {
   };
 
   return (
-    <div className="w-[21rem] py-10 px-5 h-screen  fixed  transition-all capitalize shadow-md z-10 hover:blur-0 hover:left-0 hover:bg-slate-900/95 blur-xs -left-80 bg-slate-500/50">
+    <div className="w-[21rem] py-2 px-5 h-screen fixed  transition-all capitalize shadow-md z-10 hover:blur-0 hover:left-0 hover:bg-slate-900/95 blur-xs -left-80 bg-slate-500/50">
       <div className="p-2 mb-2 flex items-center gap-3 font-semibold text-xl relative">
         <BsPersonWorkspace className="h-10 w-10 p-1 rounded-md bg-white text-black inline-block" />
         <h2>{user ? `${user}'s` : "user's"} workspace</h2>
@@ -40,8 +40,8 @@ export default function SideBarLeft() {
         </li>
         <li className="py-2 px-4">
           <span>change background</span>
-          <hr className="my-4" />
-          <ul className="h-[60vh] overflow-y-scroll scrollbar grid grid-cols-2 gap-2 p-2 items-center justify-center">
+          <hr className="mb-4 mt-1" />
+          <ul className="h-[70vh] overflow-y-scroll scrollbar grid grid-cols-2 gap-2 p-2 items-center justify-center">
             {backgroundImages.map((bg) => (
               <img
                 src={bg + "?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60"}
@@ -54,6 +54,9 @@ export default function SideBarLeft() {
           </ul>
         </li>
       </ul>
+      <p className="my-2 w-full text-center text-xs font-light">
+        Demo project by Ismayel Alam
+      </p>
     </div>
   );
 }
