@@ -72,14 +72,15 @@ export default function TaskHeading({ list, collapse }) {
   return (
     <header className="flex p-2 items-center justify-between overflow-visible">
       <h2
-        className="text-lg font-semibold capitalize px-4 rounded-lg"
+        className="text-lg font-semibold capitalize px-4 rounded-lg min-h-[1rem] cursor-pointer"
         onClick={handleRename}
       >
         {rename ? (
           <input
             type="text"
+            required
             autoFocus
-            className="rounded text-black"
+            className="rounded text-black shadow-inner shadow-red-300 valid:shadow-green-300 outline-none"
             onBlur={handleRename}
             onChange={handleChange}
             value={newTitle}

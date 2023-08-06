@@ -8,6 +8,7 @@ const listSlice = createSlice({
   name: "list",
   initialState: data,
   reducers: {
+    // lists functions
     setBoard(state, action) {
       state = action.payload;
       return state;
@@ -33,7 +34,7 @@ const listSlice = createSlice({
       return state;
     },
 
-    // cards
+    // cards functions
     addCard(state, action) {
       state = state.map((list) =>
         list.id === action.payload.id
@@ -57,6 +58,7 @@ const listSlice = createSlice({
       );
     },
 
+    // list and card functions
     dropCard(state, action) {
       const { source, destination } = action.payload;
 

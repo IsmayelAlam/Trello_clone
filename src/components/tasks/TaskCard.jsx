@@ -12,7 +12,7 @@ export default function TaskCard({ cards, id }) {
             ref={provided.innerRef}
           >
             {cards.map((card, index) => (
-              <Tasks card={card} key={card.id} index={index} />
+              <Tasks card={card} key={card.id} index={index} listId={id} />
             ))}
             {provided.placeholder}
           </ul>
