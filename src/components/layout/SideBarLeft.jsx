@@ -7,16 +7,26 @@ import { previewBoard } from "../../previewBoard";
 import { setBoard } from "../../stores";
 
 const bgs = [
-  "https://images.unsplash.com/photo-1690812099871-47b7f71c93af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1185&q=80",
-  "https://images.unsplash.com/photo-1477346611705-65d1883cee1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-  "https://images.unsplash.com/photo-1493514789931-586cb221d7a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80",
-  "https://images.unsplash.com/photo-1482192505345-5655af888cc4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1228&q=80",
-  "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-  "https://images.unsplash.com/photo-1542640244-7e672d6cef4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-  "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1173&q=80",
-  "https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-  "https://images.unsplash.com/photo-1549558549-415fe4c37b60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1719&q=80",
-  "https://images.unsplash.com/photo-1498550744921-75f79806b8a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+  "https://images.unsplash.com/photo-1549558549-415fe4c37b60",
+  "https://images.unsplash.com/photo-1690812099871-47b7f71c93af",
+  "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
+  "https://images.unsplash.com/photo-1541727687969-ce40493cd847",
+  "https://images.unsplash.com/photo-1493514789931-586cb221d7a7",
+  "https://images.unsplash.com/photo-1482192505345-5655af888cc4",
+  "https://images.unsplash.com/photo-1541701494587-cb58502866ab",
+  "https://images.unsplash.com/photo-1542640244-7e672d6cef4e",
+  "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+  "https://images.unsplash.com/photo-1448375240586-882707db888b",
+  "https://images.unsplash.com/photo-1498550744921-75f79806b8a7",
+  "https://images.unsplash.com/photo-1449034446853-66c86144b0ad",
+  "https://images.unsplash.com/photo-1472457897821-70d3819a0e24",
+  "https://images.unsplash.com/photo-1487621167305-5d248087c724",
+  "https://images.unsplash.com/photo-1418065460487-3e41a6c84dc5",
+  "https://images.unsplash.com/photo-1477414348463-c0eb7f1359b6",
+  "https://images.unsplash.com/photo-1445855743215-296f71d4b49c",
+  "https://images.unsplash.com/photo-1470115636492-6d2b56f9146d",
+  "https://images.unsplash.com/photo-1464798429116-8e26f96b2e60",
+  "https://images.unsplash.com/photo-1507290439931-a861b5a38200",
 ];
 
 export default function SideBarLeft() {
@@ -26,7 +36,7 @@ export default function SideBarLeft() {
   const dispatch = useDispatch();
 
   const handleBG = (e) => {
-    const selectedBg = e.target.src;
+    const selectedBg = e.target.dataset.id;
     setImg(selectedBg);
     document.body.style.backgroundImage = `url(${selectedBg})`;
   };
@@ -50,12 +60,13 @@ export default function SideBarLeft() {
         <li className="py-2 px-4">
           <span>change background</span>
           <hr className="my-4" />
-          <ul className="h-[60vh] overflow-y-scroll scrollbar space-y-3">
+          <ul className="h-[60vh] overflow-y-scroll scrollbar grid grid-cols-2 gap-2 p-2 items-center justify-center">
             {bgs.map((bg) => (
               <img
-                src={bg}
-                className="py-2 hover:bg-slate-500 rounded-lg px-4 cursor-pointer font-semibold rounded-lg"
+                src={bg + "?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60"}
+                className="hover:opacity-70 h-full w-full rounded-lg cursor-pointer font-semibold"
                 onClick={handleBG}
+                data-id={bg}
                 key={bg}
               />
             ))}

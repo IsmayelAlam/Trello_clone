@@ -41,7 +41,7 @@ export default function AddNewTask({ type, id, collapse, classes }) {
         type="text"
         required
         placeholder="Add title..."
-        className="rounded resize-none scrollbar p-2 h-20"
+        className="rounded-md resize-none scrollbar p-2 h-20 border-2 border-red-400 valid:border-green-400 outline-none"
         autoFocus
         value={title}
         onChange={handleChange}

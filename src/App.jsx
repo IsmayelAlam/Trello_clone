@@ -24,7 +24,11 @@ function App() {
 
   return (
     <div className="overflow-y-hidden h-screen scrollbar bg-cover bg-center text-gray-300 relative">
-      <ProjectHeading setSaveList={setSaveList} currentList={currentList} />
+      <ProjectHeading
+        setSaveList={setSaveList}
+        saveList={saveList}
+        currentList={currentList}
+      />
       <SideBarLeft />
       <Board />
     </div>

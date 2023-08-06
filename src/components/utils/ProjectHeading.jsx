@@ -10,7 +10,7 @@ import { setBoard } from "../../stores";
 
 const portal = document.getElementById("portal");
 
-export default function ProjectHeading({ setSaveList, currentList }) {
+export default function ProjectHeading({ saveList, setSaveList, currentList }) {
   const [user, setUser] = useLocalStorage("user", "");
   const [usernameChange, setUsernameChange] = useState(Boolean(user) || false);
   const dispatch = useDispatch();
@@ -34,6 +34,7 @@ export default function ProjectHeading({ setSaveList, currentList }) {
             setSaveList([]);
             dispatch(setBoard([]));
           }}
+          className={saveList.length || "hidden"}
         >
           <BsTrash className="border-2 w-7 h-7 p-1 rounded-lg cursor-pointer" />
         </button>

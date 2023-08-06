@@ -6,7 +6,7 @@ import { createPortal } from "react-dom";
 
 const portal = document.getElementById("portal");
 
-export default function Tasks({ card, index, children }) {
+export default function Tasks({ card, index }) {
   const [show, setShow] = useState(false);
   const [modal, setModal] = useState(false);
 

@@ -1,7 +1,7 @@
 import Tasks from "./Tasks";
 import { Droppable } from "react-beautiful-dnd";
 
-export default function TaskCard({ cards, index, id }) {
+export default function TaskCard({ cards, id }) {
   return (
     <Droppable droppableId={id} type="card">
       {(provided) => {
