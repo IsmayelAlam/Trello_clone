@@ -1,6 +1,9 @@
 import { useState } from "react";
-import { BsChat, BsTextLeft, BsListCheck } from "react-icons/bs";
 import { Draggable } from "react-beautiful-dnd";
+import { BsChat, BsListCheck } from "react-icons/bs";
+import { CiStickyNote } from "react-icons/ci";
+import { AiOutlineInfoCircle } from "react-icons/ai";
+
 import TaskModal from "./TaskModal";
 import { createPortal } from "react-dom";
 
@@ -33,10 +36,12 @@ export default function Tasks({ card, index, listId }) {
                 <div className="rounded-lg m-1 h-2 w-10 bg-blue-700"></div>
               </div>
               <h2 className="overflow-hidden">{card.title}</h2>
-              <div className="flex items-center gap-2">
-                {card.description && <BsTextLeft className="py-1 h-6 w-6" />}
-                <BsListCheck className="py-1 h-6 w-6" />
-                <BsChat className="py-1 h-6 w-6" />
+              <div className="flex items-center gap-1 justify-start">
+                {card.description && (
+                  <AiOutlineInfoCircle className="h-4 w-4" />
+                )}
+                {card.taskList && <BsListCheck className="h-4 w-4" />}
+                {card.notes && <CiStickyNote className="h-4 w-4" />}
               </div>
             </div>
             {modal &&

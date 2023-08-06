@@ -73,6 +73,27 @@ const listSlice = createSlice({
           return list;
         }
       });
+
+      return state;
+    },
+
+    updateCardDescription(state, action) {
+      const { id, newDescription } = action.payload;
+
+      state = state.map((list) => {
+        if (list.id === id.list) {
+          return {
+            ...list,
+            cards: list.cards.map((card) =>
+              card.id === id.card
+                ? { ...card, description: newDescription }
+                : card
+            ),
+          };
+        } else {
+          return list;
+        }
+      });
       // console.log(action.payload);
 
       return state;
@@ -153,4 +174,5 @@ export const {
   renameList,
   setBoard,
   renameCard,
+  updateCardDescription,
 } = listSlice.actions;

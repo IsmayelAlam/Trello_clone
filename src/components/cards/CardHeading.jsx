@@ -10,8 +10,6 @@ export default function CardHeading({ card, id }) {
 
   const time = new Date(card.date);
 
-  const handleChange = (e) => setTitle(e.target.value);
-
   const handleRename = (e) => {
     e.preventDefault();
     setRename(!rename);
@@ -21,7 +19,7 @@ export default function CardHeading({ card, id }) {
   return (
     <>
       <h2
-        className="text-3xl font-semibold text-white capitalize"
+        className="text-3xl font-semibold text-white capitalize cursor-pointer hover:text-white/75 transition-all duration-150"
         onClick={handleRename}
       >
         {rename ? (
@@ -32,7 +30,7 @@ export default function CardHeading({ card, id }) {
               autoFocus
               className="rounded text-black shadow-inner shadow-red-300 valid:shadow-green-300 outline-none w-full"
               onBlur={handleRename}
-              onChange={handleChange}
+              onChange={(e) => setTitle(e.target.value)}
               value={newTitle}
             />
           </form>
