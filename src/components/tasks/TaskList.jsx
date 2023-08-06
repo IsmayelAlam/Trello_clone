@@ -3,7 +3,7 @@ import { useState } from "react";
 import AddNewTask from "../utils/AddNewTask";
 import Button from "../utils/Buttons";
 import TaskCard from "./TaskCard";
-import TaskHeading from "../utils/TaskHeading";
+import TaskHeading from "./TaskHeading";
 import { Draggable } from "react-beautiful-dnd";
 
 export default function TaskList({ list, index }) {

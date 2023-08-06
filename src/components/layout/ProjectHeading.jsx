@@ -4,8 +4,8 @@ import { BsSave, BsTrash } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 
 import useLocalStorage from "../../hooks/useLocalStorage";
-import Clock from "./Clock";
-import Modal from "./Modal";
+import Clock from "../utils/Clock";
+import Modal from "../utils/Modal";
 import { setBoard } from "../../stores";
 
 const portal = document.getElementById("portal");
@@ -18,7 +18,7 @@ export default function ProjectHeading({ saveList, setSaveList, currentList }) {
   document.title = Boolean(user) ? `${user}'s Board` : "kanban board";
 
   let content = (
-    <header className="w-screen fixed bg-slate-700/50 text-white h-14 flex items-center justify-between pr-10 gap-2 shadow">
+    <header className="w-screen fixed bg-slate-700/75 text-white h-14 flex items-center justify-between pr-10 gap-2 shadow">
       <h1
         className="text-xl ml-10 capitalize cursor-pointer"
         onClick={() => setUsernameChange(false)}
