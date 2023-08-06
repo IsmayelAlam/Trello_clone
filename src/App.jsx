@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [saveList, setSaveList] = useLocalStorage("list", "");
+  const [img] = useLocalStorage("bgImg", "");
   const currentList = useSelector((state) => state.list);
 
   const [close, setClose] = useState(
@@ -14,6 +15,8 @@ function App() {
   );
 
   useEffect(() => {
+    document.body.style.backgroundImage = img ? `url(${img})` : null;
+
     setClose(JSON.stringify(saveList) === JSON.stringify(currentList));
   }, [currentList, saveList, close]);
 
