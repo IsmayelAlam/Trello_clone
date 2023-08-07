@@ -140,6 +140,32 @@ const listSlice = createSlice({
       return state;
     },
 
+    updateCardTask(state, action) {
+      const { id, index } = action.payload;
+
+      state = state.map((list) => {
+        if (list.id === id.list) {
+          return {
+            ...list,
+            cards: list.cards.map((card) =>
+              card.id === id.card
+                ? {
+                    ...card,
+                    taskList: card.taskList.map((task, id) =>
+                      id === index ? { ...task, marked: !task.marked } : task
+                    ),
+                  }
+                : card
+            ),
+          };
+        } else {
+          return list;
+        }
+      });
+
+      return state;
+    },
+
     deleteCardTask(state, action) {
       const { id, index } = action.payload;
 
@@ -242,4 +268,5 @@ export const {
   updateCardDescription,
   addCardTask,
   deleteCardTask,
+  updateCardTask,
 } = listSlice.actions;

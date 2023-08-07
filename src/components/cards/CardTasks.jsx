@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { BsListTask, BsTrash } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import { addCardTask, deleteCardTask } from "../../stores";
+import { addCardTask, deleteCardTask, updateCardTask } from "../../stores";
+import TaskList from "../utils/TaskList";
 
-export default function CardTasks({ card, id }) {
+export default function CardTasks({ tasks = {}, id }) {
   const [newTask, setNewTask] = useState("");
-  // const [newTitle, setTitle] = useState(card.title);
 
   const dispatch = useDispatch();
 
@@ -41,28 +41,9 @@ export default function CardTasks({ card, id }) {
         </button>
       </form>
       <ul className="space-y-2">
-        {card.taskList &&
-          card.taskList.map((task, index) => (
-            <li
-              key={index}
-              className={`flex items-center justify-between text-lg min-w-[20rem] px-2 py-1 max-w-full w-96 ${
-                task.marked && "line-through"
-              }`}
-            >
-              <div className="space-x-2">
-                <input
-                  type="checkbox"
-                  name={task.title}
-                  id={index}
-                  checked={task.marked}
-                />
-                <span>{task.title}</span>
-              </div>
-              <div onClick={() => dispatch(deleteCardTask({ id, index }))}>
-                <BsTrash className="w-4 h-4 mx-2" />
-              </div>
-            </li>
-          ))}
+        {tasks.map((task, index) => (
+          <TaskList task={task} index={index} key={index} id={id} />
+        ))}
       </ul>
     </div>
   );

@@ -26,9 +26,9 @@ export default function TaskModal({ card, listId, collapse }) {
           <CardHeading card={card} id={id} />
           <p>label</p>
           <CardDescription card={card} id={id} />
-          <CardTasks card={card} id={id} />
+          <CardTasks tasks={card.taskList} id={id} />
         </div>
-        <div>
+        <div className="w-72">
           <div className="flex flex-col gap-1 text-md font-semibold mb-4 w-max">
             <button className="outline-none py-1 px-2 w-full bg-slate-300 hover:bg-slate-400 active:bg-slate-100 rounded-md">
               Rename Card
@@ -40,7 +40,7 @@ export default function TaskModal({ card, listId, collapse }) {
               Update Description
             </button>
           </div>
-          <p>notes</p>
+          <p>{/* <CardTasks card={card} id={id} /> */}</p>
         </div>
       </div>
     </div>
