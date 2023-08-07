@@ -11,22 +11,23 @@ export default function AddLabel({ id, label = [], close }) {
   const [title, setTitle] = useState("");
   const [color, setColor] = useState("");
 
-  //   const newLabel = [...labels, ...selected];
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(updateCardLabel({ id, selected }));
   }, [selected]);
 
+  const selectedTitles = labels.map((select) => select.title);
+
+  labels.push(
+    ...selected.filter((label) => !selectedTitles.includes(label.title))
+  );
+
   const handleAddNewLabel = (e) => {
     e.preventDefault();
 
     if (
-      !selected.some(
-        (lb) =>
-          lb.title.toLowerCase() === title.toLowerCase() || lb.color === color
-      )
+      !selected.some((lb) => lb.title.toLowerCase() === title.toLowerCase())
     ) {
       setSelected((lb) => [...lb, { title, color }]);
       labels.push({ title, color });

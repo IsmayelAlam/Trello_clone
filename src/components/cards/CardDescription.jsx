@@ -2,9 +2,11 @@ import { useState } from "react";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { updateCardDescription } from "../../stores";
+import { BiEditAlt } from "react-icons/bi";
 
 export default function CardDescription({ card, id }) {
   const [update, setUpdate] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
   const [newDescription, setDescription] = useState(card.description);
   const dispatch = useDispatch();
 
@@ -25,7 +27,9 @@ export default function CardDescription({ card, id }) {
 
       <div
         onClick={() => setUpdate(true)}
-        className="cursor-pointer w-full hover:bg-slate-700 px-2 py-1 rounded-lg"
+        className="cursor-pointer w-full hover:bg-slate-700 px-2 py-1 rounded-lg flex items-center justify-between"
+        onMouseEnter={() => setShowEdit((d) => !d)}
+        onMouseLeave={() => setShowEdit((d) => !d)}
       >
         {update ? (
           <textarea
@@ -38,8 +42,11 @@ export default function CardDescription({ card, id }) {
             value={newDescription}
           />
         ) : (
-          card.description || empty
+          <p>{card.description || empty}</p>
         )}
+        <div className="w-5 h-5">
+          {showEdit && <BiEditAlt className="w-5 h-5" />}
+        </div>
       </div>
     </div>
   );

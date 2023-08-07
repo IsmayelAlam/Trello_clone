@@ -8,12 +8,15 @@ import CardTasks from "../cards/CardTasks";
 import CardNotes from "../cards/CardNotes";
 import CardLabel from "../cards/CardLabel";
 import AddLabel from "../utils/AddLabel";
+import { deleteCard } from "../../stores";
+import { useDispatch } from "react-redux";
+import { BsTrash } from "react-icons/bs";
 
 export default function TaskModal({ card, id, collapse }) {
   const [show, setShow] = useState(false);
-  const ref = useRef();
 
-  // console.log(card);
+  const ref = useRef();
+  const dispatch = useDispatch();
 
   return (
     <div
@@ -28,7 +31,7 @@ export default function TaskModal({ card, id, collapse }) {
         />
 
         <div>
-          <CardHeading card={card} id={id} />
+          <CardHeading card={card} id={id} show={show} />
 
           <div className="flex w-max items-center gap-1 relative mt-1 mb-5 py-1 text-white">
             <CardLabel label={card.label} id={id} styleClass="py-1" />
@@ -48,18 +51,14 @@ export default function TaskModal({ card, id, collapse }) {
 
           <CardTasks tasks={card.taskList} id={id} />
         </div>
-        <div className="w-72">
-          <div className="flex flex-col gap-1 text-md font-semibold mb-4 w-max mx-auto">
-            <button className="outline-none py-1 px-2 w-full bg-slate-300 hover:bg-slate-400 active:bg-slate-100 rounded-md">
-              Rename Card
-            </button>
-            <button className="outline-none py-1 px-2 w-full bg-slate-300 hover:bg-slate-400 active:bg-slate-100 rounded-md">
-              Delete Card
-            </button>
-            <button className="outline-none py-1 px-2 w-full bg-slate-300 hover:bg-slate-400 active:bg-slate-100 rounded-md">
-              Update Description
-            </button>
-          </div>
+        <div className="w-72 flex flex-col">
+          <button
+            className="outline-none py-px px-2 w-fit mx-auto bg-slate-300 hover:bg-slate-400 active:bg-slate-100 rounded-md flex items-center gap-1"
+            onClick={() => dispatch(deleteCard(id))}
+          >
+            <BsTrash />
+            Delete Card
+          </button>
           <CardNotes notes={card.notes} id={id} />
         </div>
       </div>

@@ -25,6 +25,7 @@ const listSlice = createSlice({
     deleteList(state, action) {
       return state.filter((data) => data.id !== action.payload.id);
     },
+
     renameList(state, action) {
       state = state.map((list) =>
         list.id === action.payload.id
@@ -52,11 +53,13 @@ const listSlice = createSlice({
     },
 
     deleteCard(state, action) {
-      state = state.map((list) =>
-        list.id === action.payload.id
+      return state.map((list) =>
+        list.id === action.payload.list
           ? {
               ...list,
-              cards: list.cards.filter((card) => card.id !== action.payload.id),
+              cards: list.cards.filter(
+                (card) => card.id !== action.payload.card
+              ),
             }
           : list
       );
@@ -330,6 +333,7 @@ const listSlice = createSlice({
 export default listSlice.reducer;
 export const {
   addCard,
+  deleteCard,
   addList,
   deleteList,
   dropCard,
