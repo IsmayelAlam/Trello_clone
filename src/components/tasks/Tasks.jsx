@@ -40,10 +40,8 @@ export default function Tasks({ card, index, listId }) {
                 {card.description && (
                   <AiOutlineInfoCircle className="h-4 w-4" />
                 )}
-                {card.taskList?.length > 0 && (
-                  <BsListTask className="h-4 w-4" />
-                )}
-                {card.notes?.length > 0 && <CiStickyNote className="h-4 w-4" />}
+                {card.taskList.length > 0 && <BsListTask className="h-4 w-4" />}
+                {card.notes.length > 0 && <CiStickyNote className="h-4 w-4" />}
               </div>
             </div>
             {modal &&

@@ -14,8 +14,16 @@ export const previewBoard = [
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit nam cum assumenda quas officiis sint temporibus illum modi eum nulla? Quae corporis vero non autem eius dolorum doloribus fuga perferendis!",
         label: [
           {
-            type: "vip",
+            title: "vip",
             color: "#ff5412",
+          },
+          {
+            title: "urgent",
+            color: "#a83232",
+          },
+          {
+            title: "paid",
+            color: "#32a84c",
           },
         ],
         taskList: [
@@ -179,8 +187,14 @@ export const previewBoard = [
 ];
 
 export const backgroundImages = [
+  "https://images.unsplash.com/photo-1471479917193-f00955256257",
+  "https://images.unsplash.com/photo-1517672651691-24622a91b550",
+  "https://images.unsplash.com/photo-1476264814085-136004d4b582",
+  "https://images.unsplash.com/photo-1581682580639-d273d7218a44",
+  "https://images.unsplash.com/photo-1579762593131-b8945254345c",
+  "https://images.unsplash.com/photo-1614212680663-20d8675d8900",
+  "https://images.unsplash.com/photo-1519381577144-50b1eed100ec",
   "https://images.unsplash.com/photo-1549558549-415fe4c37b60",
-  "https://images.unsplash.com/photo-1690812099871-47b7f71c93af",
   "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
   "https://images.unsplash.com/photo-1493514789931-586cb221d7a7",
   "https://images.unsplash.com/photo-1482192505345-5655af888cc4",

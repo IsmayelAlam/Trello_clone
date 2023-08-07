@@ -6,7 +6,7 @@ import { BsTrash } from "react-icons/bs";
 
 import { addCardNote, deleteCardNote } from "../../stores";
 
-export default function CardNotes({ notes = {}, id }) {
+export default function CardNotes({ notes, id }) {
   const [newNote, setNewNote] = useState("");
 
   const dispatch = useDispatch();
@@ -39,10 +39,10 @@ export default function CardNotes({ notes = {}, id }) {
           <BiMessageSquareAdd />
         </button>
       </form>
-      <ul className="space-y-2 w-full pl-5 text-justify list-disc">
+      <ul className="space-y-2 w-full text-justify list-disc pl-5">
         {notes?.map((note, index) => (
-          <li className="space-x-1 rounded-lg">
-            <div className="flex items-center justify-between">
+          <li key={index}>
+            <div className="flex items-center justify-between w-full break-all space-x-1">
               <span>{note}</span>
               <span
                 onClick={() => dispatch(deleteCardNote({ id, index }))}

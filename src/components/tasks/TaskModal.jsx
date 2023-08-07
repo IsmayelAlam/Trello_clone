@@ -5,9 +5,12 @@ import { useRef } from "react";
 import CardDescription from "../cards/CardDescription";
 import CardTasks from "../cards/CardTasks";
 import CardNotes from "../cards/CardNotes";
+import CardLabel from "../cards/CardLabel";
 
 export default function TaskModal({ card, listId, collapse }) {
   const ref = useRef();
+
+  console.log(card);
 
   const id = { card: card.id, list: listId };
 
@@ -17,7 +20,7 @@ export default function TaskModal({ card, listId, collapse }) {
       ref={ref}
       onClick={(e) => (ref.current === e.target ? collapse() : null)}
     >
-      <div className="bg-slate-800 rounded-lg shadow-md w-[50%] h-[90%] px-10 py-14 overflow-hidden overflow-y-scroll scrollbar grid grid-cols-[3fr,1fr] gap-10 relative">
+      <div className="bg-slate-800 rounded-xl shadow-lg w-[50%] h-[90%] px-10 py-14 overflow-hidden overflow-y-scroll scrollbar grid grid-cols-[3fr,1fr] gap-10 relative">
         <MdOutlineCancel
           className="w-5 h-5 absolute top-5 right-5 text-white cursor-pointer"
           onClick={collapse}
@@ -25,7 +28,7 @@ export default function TaskModal({ card, listId, collapse }) {
 
         <div>
           <CardHeading card={card} id={id} />
-          <p>label</p>
+          <CardLabel label={card.label} id={id} />
           <CardDescription card={card} id={id} />
           <CardTasks tasks={card.taskList} id={id} />
         </div>
