@@ -33,9 +33,7 @@ export const previewBoard = [
             title: "task 03",
           },
         ],
-        notes: [
-          "commenttask 01Lorem ipsum dolor sit amet consectetur adipisicing elit.task 01Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        ],
+        notes: ["comment 01", "ko;adhjsf"],
       },
       {
         id: nanoid(),

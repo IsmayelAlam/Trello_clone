@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { BiMessageSquareAdd } from "react-icons/bi";
 import { CiStickyNote } from "react-icons/ci";
+import { BsTrash } from "react-icons/bs";
 
-import { addCardTask } from "../../stores";
+import { addCardNote, deleteCardNote } from "../../stores";
 
 export default function CardNotes({ notes = {}, id }) {
   const [newNote, setNewNote] = useState("");
@@ -12,7 +13,7 @@ export default function CardNotes({ notes = {}, id }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // dispatch(addCardTask({ id, newTask }));
+    dispatch(addCardNote({ id, newNote }));
     setNewNote("");
   };
 
@@ -38,9 +39,19 @@ export default function CardNotes({ notes = {}, id }) {
           <BiMessageSquareAdd />
         </button>
       </form>
-      <ul className="space-y-2 list-disc w-full px-5 text-justify">
-        {notes.map((note, index) => (
-          <li>{note}</li>
+      <ul className="space-y-2 w-full pl-5 text-justify list-disc">
+        {notes?.map((note, index) => (
+          <li className="space-x-1 rounded-lg">
+            <div className="flex items-center justify-between">
+              <span>{note}</span>
+              <span
+                onClick={() => dispatch(deleteCardNote({ id, index }))}
+                className="w-4 h-4 cursor-pointer text-white/50 hover:text-white"
+              >
+                <BsTrash />
+              </span>
+            </div>
+          </li>
         ))}
       </ul>
     </div>

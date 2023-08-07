@@ -190,6 +190,54 @@ const listSlice = createSlice({
       return state;
     },
 
+    addCardNote(state, action) {
+      const { id, newNote } = action.payload;
+
+      state = state.map((list) => {
+        if (list.id === id.list) {
+          return {
+            ...list,
+            cards: list.cards.map((card) =>
+              card.id === id.card
+                ? {
+                    ...card,
+                    notes: [newNote, ...card.notes],
+                  }
+                : card
+            ),
+          };
+        } else {
+          return list;
+        }
+      });
+
+      return state;
+    },
+
+    deleteCardNote(state, action) {
+      const { id, index } = action.payload;
+
+      state = state.map((list) => {
+        if (list.id === id.list) {
+          return {
+            ...list,
+            cards: list.cards.map((card) =>
+              card.id === id.card
+                ? {
+                    ...card,
+                    notes: card.notes.filter((_, id) => id !== index),
+                  }
+                : card
+            ),
+          };
+        } else {
+          return list;
+        }
+      });
+
+      return state;
+    },
+
     // list and card functions
     dropCard(state, action) {
       const { source, destination } = action.payload;
@@ -269,4 +317,6 @@ export const {
   addCardTask,
   deleteCardTask,
   updateCardTask,
+  addCardNote,
+  deleteCardNote,
 } = listSlice.actions;
