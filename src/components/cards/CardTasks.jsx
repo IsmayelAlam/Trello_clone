@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { BsListTask, BsTrash } from "react-icons/bs";
+import { BsListTask } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import { addCardTask, deleteCardTask, updateCardTask } from "../../stores";
-import TaskList from "../utils/TaskList";
+
+import { addCardTask } from "../../stores";
+import CardTaskList from "./CardTaskList";
 
 export default function CardTasks({ tasks = {}, id }) {
   const [newTask, setNewTask] = useState("");
@@ -16,9 +17,9 @@ export default function CardTasks({ tasks = {}, id }) {
   };
 
   return (
-    <div className="text-white space-y-4 mt-5">
+    <div className="text-white space-y-4 mt-10">
       <form
-        className="border-b-2 w-fit p-1 h-12 flex items-center justify-start"
+        className="border-b-2 w-full p-1 h-12 flex items-center justify-start"
         onSubmit={handleSubmit}
       >
         <label htmlFor="task">
@@ -26,7 +27,7 @@ export default function CardTasks({ tasks = {}, id }) {
         </label>
         <input
           type="text"
-          className="bg-transparent w-64 h-full px-1 outline-none mx-2"
+          className="bg-transparent h-full px-1 outline-none mx-2 grow"
           id="task"
           placeholder="add new task"
           required
@@ -42,7 +43,7 @@ export default function CardTasks({ tasks = {}, id }) {
       </form>
       <ul className="space-y-2">
         {tasks.map((task, index) => (
-          <TaskList task={task} index={index} key={index} id={id} />
+          <CardTaskList task={task} index={index} key={index} id={id} />
         ))}
       </ul>
     </div>

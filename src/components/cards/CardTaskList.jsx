@@ -3,13 +3,13 @@ import { useDispatch } from "react-redux";
 import { deleteCardTask, updateCardTask } from "../../stores";
 import { BsTrash } from "react-icons/bs";
 
-export default function TaskList({ task, index, id }) {
+export default function CardTaskList({ task, index, id }) {
   const [showDlt, setShowDlt] = useState(false);
   const dispatch = useDispatch();
 
   return (
     <li
-      className={`flex items-center justify-between text-lg min-w-[20rem] px-2 py-1 max-w-full w-96 border-y ${
+      className={`flex items-center justify-between text-lg min-w-[20rem] px-2 py-1 w-full hover:bg-slate-700 rounded-lg ${
         task.marked && "line-through"
       }`}
       onMouseEnter={() => setShowDlt((d) => !d)}
@@ -24,10 +24,13 @@ export default function TaskList({ task, index, id }) {
           onChange={() => dispatch(updateCardTask({ id, index }))}
           className="w-4 h-4"
         />
-        <span>{task.title}</span>
+        <label htmlFor={index}>{task.title}</label>
       </div>
-      <div onClick={() => dispatch(deleteCardTask({ id, index }))}>
-        {showDlt && <BsTrash className="w-4 h-4 mx-2 cursor-pointer" />}
+      <div
+        onClick={() => dispatch(deleteCardTask({ id, index }))}
+        className="w-5 h-5 cursor-pointer"
+      >
+        {showDlt && <BsTrash className="w-4 h-4" />}
       </div>
     </li>
   );

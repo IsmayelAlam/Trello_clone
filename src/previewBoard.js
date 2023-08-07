@@ -34,10 +34,7 @@ export const previewBoard = [
           },
         ],
         notes: [
-          {
-            data: Date.now(),
-            comment: "comment 01",
-          },
+          "commenttask 01Lorem ipsum dolor sit amet consectetur adipisicing elit.task 01Lorem ipsum dolor sit amet consectetur adipisicing elit.",
         ],
       },
       {
