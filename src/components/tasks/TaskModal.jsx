@@ -41,7 +41,7 @@ export default function TaskModal({ card, id, collapse }) {
                 </span>
               )}
             </button>
-            {show && <AddLabel id={id} label={card.label} />}
+            {show && <AddLabel id={id} label={card.label} close={setShow} />}
           </div>
 
           <CardDescription card={card} id={id} />

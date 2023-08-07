@@ -240,7 +240,7 @@ export const labels = [
   },
   {
     title: "optional",
-    color: "#1ad3e8",
+    color: "#00b59d",
   },
   {
     title: "paid",
@@ -248,11 +248,11 @@ export const labels = [
   },
   {
     title: "unpaid",
-    color: "#fcba03",
+    color: "#eb6f28",
   },
   {
     title: "revision",
-    color: "#eb6f28",
+    color: "#fcba03",
   },
   {
     title: "bug",
