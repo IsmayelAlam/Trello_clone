@@ -6,11 +6,13 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 
 import TaskModal from "./TaskModal";
 import { createPortal } from "react-dom";
+import CardLabel from "../cards/CardLabel";
 
 const portal = document.getElementById("portal");
 
 export default function Tasks({ card, index, listId }) {
   const [modal, setModal] = useState(false);
+  const id = { card: card.id, list: listId };
 
   const showModels = () => setModal((model) => !model);
 
@@ -30,11 +32,8 @@ export default function Tasks({ card, index, listId }) {
                 snap.isDragging ? "opacity-90 rotate-3" : ""
               }`}
             >
-              <div className="flex flex-wrap items-center space-x-1">
-                <div className="rounded-lg h-2 w-10 bg-red-700"></div>
-                <div className="rounded-lg h-2 w-10 bg-green-700"></div>
-                <div className="rounded-lg h-2 w-10 bg-blue-700"></div>
-              </div>
+              <CardLabel label={card.label} id={id} styleClass="py-px" />
+
               <h2 className="overflow-hidden">{card.title}</h2>
               <div className="flex items-center gap-1 justify-start">
                 {card.description && (
@@ -46,7 +45,7 @@ export default function Tasks({ card, index, listId }) {
             </div>
             {modal &&
               createPortal(
-                <TaskModal card={card} listId={listId} collapse={showModels} />,
+                <TaskModal card={card} id={id} collapse={showModels} />,
                 portal
               )}
           </li>

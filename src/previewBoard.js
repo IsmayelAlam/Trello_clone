@@ -228,3 +228,38 @@ export const backgroundImages = [
   "https://images.unsplash.com/photo-1618367588411-d9a90fefa881",
   "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe",
 ];
+
+export const labels = [
+  {
+    title: "vip",
+    color: "#d41cd4",
+  },
+  {
+    title: "urgent",
+    color: "#f00707",
+  },
+  {
+    title: "optional",
+    color: "#1ad3e8",
+  },
+  {
+    title: "paid",
+    color: "#32a84c",
+  },
+  {
+    title: "unpaid",
+    color: "#fcba03",
+  },
+  {
+    title: "revision",
+    color: "#eb6f28",
+  },
+  {
+    title: "bug",
+    color: "#b58b00",
+  },
+  {
+    title: "pending",
+    color: "#a8b012",
+  },
+];

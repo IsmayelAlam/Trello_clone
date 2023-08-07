@@ -238,6 +238,29 @@ const listSlice = createSlice({
       return state;
     },
 
+    updateCardLabel(state, action) {
+      const { id, selected } = action.payload;
+
+      state = state.map((list) => {
+        if (list.id === id.list) {
+          return {
+            ...list,
+            cards: list.cards.map((card) =>
+              card.id === id.card
+                ? {
+                    ...card,
+                    label: [...selected],
+                  }
+                : card
+            ),
+          };
+        } else {
+          return list;
+        }
+      });
+
+      return state;
+    },
     // list and card functions
     dropCard(state, action) {
       const { source, destination } = action.payload;
@@ -319,4 +342,5 @@ export const {
   updateCardTask,
   addCardNote,
   deleteCardNote,
+  updateCardLabel,
 } = listSlice.actions;

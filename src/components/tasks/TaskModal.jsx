@@ -1,18 +1,19 @@
 import { MdOutlineCancel } from "react-icons/md";
+import { AiOutlinePlusCircle } from "react-icons/ai";
 
 import CardHeading from "../cards/CardHeading";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import CardDescription from "../cards/CardDescription";
 import CardTasks from "../cards/CardTasks";
 import CardNotes from "../cards/CardNotes";
 import CardLabel from "../cards/CardLabel";
+import AddLabel from "../utils/AddLabel";
 
-export default function TaskModal({ card, listId, collapse }) {
+export default function TaskModal({ card, id, collapse }) {
+  const [show, setShow] = useState(false);
   const ref = useRef();
 
-  console.log(card);
-
-  const id = { card: card.id, list: listId };
+  // console.log(card);
 
   return (
     <div
@@ -28,8 +29,23 @@ export default function TaskModal({ card, listId, collapse }) {
 
         <div>
           <CardHeading card={card} id={id} />
-          <CardLabel label={card.label} id={id} />
+
+          <div className="flex w-max items-center gap-1 relative mt-1 mb-5 py-1 text-white">
+            <CardLabel label={card.label} id={id} styleClass="py-1" />
+            <button onClick={setShow.bind(null, !show)}>
+              {card.label?.length > 0 ? (
+                <AiOutlinePlusCircle className="w-5 h-5" />
+              ) : (
+                <span className="border truncate rounded-full px-2 font-semibold text-white/50 text-xs hover:text-white capitalize">
+                  add Label
+                </span>
+              )}
+            </button>
+            {show && <AddLabel id={id} label={card.label} />}
+          </div>
+
           <CardDescription card={card} id={id} />
+
           <CardTasks tasks={card.taskList} id={id} />
         </div>
         <div className="w-72">
