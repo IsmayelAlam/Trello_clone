@@ -24,13 +24,13 @@ export default function TaskModal({ card, id, collapse }) {
       ref={ref}
       onClick={(e) => (ref.current === e.target ? collapse() : null)}
     >
-      <div className="bg-slate-800 rounded-xl shadow-lg w-[50%] h-[90%] px-10 py-14 overflow-hidden overflow-y-scroll scrollbar grid grid-cols-[3fr,1fr] gap-10 relative">
+      <div className="bg-slate-800 rounded-xl shadow-lg w-[50%] h-[90%] px-10 py-14 overflow-hidden overflow-y-scroll scrollbar grid grid-cols-[3fr,1fr] justify-self-start gap-10 relative">
         <MdOutlineCancel
           className="w-5 h-5 absolute top-5 right-5 text-white cursor-pointer"
           onClick={collapse}
         />
 
-        <div>
+        <div className="">
           <CardHeading card={card} id={id} show={show} />
 
           <div className="flex w-max items-center gap-1 relative mt-1 mb-5 py-1 text-white">
@@ -51,6 +51,7 @@ export default function TaskModal({ card, id, collapse }) {
 
           <CardTasks tasks={card.taskList} id={id} />
         </div>
+
         <div className="w-72 flex flex-col">
           <button
             className="outline-none py-px px-2 w-fit mx-auto bg-slate-300 hover:bg-slate-400 active:bg-slate-100 rounded-md flex items-center gap-1"

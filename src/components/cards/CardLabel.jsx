@@ -1,10 +1,10 @@
-export default function CardLabel({ label, id, styleClass }) {
+export default function CardLabel({ label, styleClass }) {
   return (
-    <ul className="flex items-center gap-1 flex-wrap w-full">
+    <ul className="flex items-center gap-1 justify-start flex-wrap max-w-md">
       {label.map((la) => (
         <li
           key={la.title}
-          className={`w-max px-3 rounded-full capitalize font-semibold text-white text-xs ${styleClass}`}
+          className={`px-3 rounded-full capitalize font-semibold text-white text-xs ${styleClass}`}
           style={{ backgroundColor: la.color }}
         >
           {la.title}

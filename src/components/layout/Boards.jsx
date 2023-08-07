@@ -18,8 +18,6 @@ export default function Board() {
 
   const handleClick = () => setExpend(!expend);
 
-  // console.log(lists);
-
   return (
     <DragDropContext onDragEnd={(task) => dispatch(dropCard(task))}>
       <div className="w-fit flex items-start mt-14">
