@@ -17,11 +17,10 @@ export default function Tasks({ card, index, listId }) {
   const showModels = () => setModal((model) => !model);
 
   return (
-    <Draggable key={card.id} draggableId={card.id} index={index}>
+    <Draggable draggableId={card.id} index={index}>
       {(provided, snap) => {
         return (
           <li
-            key={card}
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
@@ -29,7 +28,7 @@ export default function Tasks({ card, index, listId }) {
           >
             <div
               className={`px-2 py-1 m-2 bg-gray-800 rounded capitalize shadow cursor-pointer relative z-0 space-y-2 ${
-                snap.isDragging ? "opacity-90 rotate-3" : ""
+                snap.isDragging ? "opacity-90 -rotate-3 z-10" : ""
               }`}
             >
               <CardLabel label={card.label} id={id} styleClass="py-px" />
