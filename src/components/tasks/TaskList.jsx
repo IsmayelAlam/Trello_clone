@@ -23,7 +23,9 @@ export default function TaskList({ list, index }) {
           >
             <TaskHeading list={list} collapse={handleClick} />
 
-            <TaskCard cards={list.cards} index={index} id={list.id} />
+            {list.cards.length < 1 || (
+              <TaskCard cards={list.cards} index={index} id={list.id} />
+            )}
 
             {expend ? (
               <AddNewTask type="card" id={list.id} collapse={handleClick} />
