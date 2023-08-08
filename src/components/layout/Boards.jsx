@@ -12,8 +12,6 @@ import { nanoid } from "@reduxjs/toolkit";
 export default function Board() {
   const lists = useSelector((state) => state.list);
 
-  console.log(JSON.stringify(lists));
-
   const dispatch = useDispatch();
 
   const [expend, setExpend] = useState(false);
