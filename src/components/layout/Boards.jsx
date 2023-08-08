@@ -21,22 +21,24 @@ export default function Board() {
   return (
     <DragDropContext onDragEnd={(task) => dispatch(dropCard(task))}>
       <div className="w-fit flex items-start mt-14">
-        <Droppable droppableId={nanoid()} type="list" direction="horizontal">
-          {(provided) => {
-            return (
-              <ul
-                className="w-fit h-screen flex items-start ml-5"
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-              >
-                {lists.map((list, index) => (
-                  <TaskList key={list.id} list={list} index={index} />
-                ))}
-                {provided.placeholder}
-              </ul>
-            );
-          }}
-        </Droppable>
+        {lists.length < 1 || (
+          <Droppable droppableId={nanoid()} type="list" direction="horizontal">
+            {(provided) => {
+              return (
+                <ul
+                  className="w-fit h-screen flex items-start ml-5"
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                >
+                  {lists.map((list, index) => (
+                    <TaskList key={list.id} list={list} index={index} />
+                  ))}
+                  {provided.placeholder}
+                </ul>
+              );
+            }}
+          </Droppable>
+        )}
         {expend ? (
           <AddNewTask type="list" collapse={handleClick} />
         ) : (
