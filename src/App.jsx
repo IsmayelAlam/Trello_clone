@@ -3,9 +3,11 @@ import ProjectHeading from "./components/layout/ProjectHeading";
 import Board from "./components/layout/Boards";
 import useLocalStorage from "./hooks/useLocalStorage";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import SafeGuardPage from "./components/layout/SafeGuardPage";
 
 function App() {
+  const windowWidth = useRef(window.innerWidth);
   const [saveList, setSaveList] = useLocalStorage("list", "");
   const currentList = useSelector((state) => state.list);
 
@@ -15,12 +17,12 @@ function App() {
 
   useEffect(() => {
     setClose(JSON.stringify(saveList) === JSON.stringify(currentList));
-  }, [currentList, saveList, close]);
+  }, [currentList, saveList, close, windowWidth]);
 
   window.onbeforeunload = () => close && alert();
 
-  return (
-    <div className="overflow-y-hidden h-screen scrollbar bg-cover bg-center text-gray-300 relative">
+  let content = (
+    <>
       <ProjectHeading
         setSaveList={setSaveList}
         saveList={saveList}
@@ -28,6 +30,14 @@ function App() {
       />
       <SideBarLeft />
       <Board />
+    </>
+  );
+
+  if (windowWidth.current < 1250) content = <SafeGuardPage />;
+
+  return (
+    <div className="overflow-y-hidden h-screen scrollbar bg-cover bg-center text-gray-300 relative">
+      {content}
     </div>
   );
 }
